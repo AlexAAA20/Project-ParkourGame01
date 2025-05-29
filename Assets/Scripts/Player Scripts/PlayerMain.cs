@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayerMain : MonoBehaviour
 {
-    Vector3 start;
-    Rigidbody2D rb;
-    PlayerMovement pm;
-    PlayerJumpMovement pjm;
+    public Vector3 start;
+    public Rigidbody2D rb;
+    public PlayerMovement pm;
+    public PlayerJumpMovement pjm;
 
     private void Start ( )
     {

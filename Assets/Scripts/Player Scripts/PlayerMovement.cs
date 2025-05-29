@@ -85,7 +85,8 @@ public class PlayerMovement : MonoBehaviour
         /// <param name="rb">Rigidbody. Used for reading and writing the horizontal speed.</param>
         /// <param name="direction">Direction that is used for inputting. From -1 to 1.</param>
         public void ApplyForce ( Rigidbody2D rb, float direction )
-        {            float currSpeed = rb.linearVelocityX;
+        {            
+            float currSpeed = rb.linearVelocityX;
             if ( frameLog && allowLogging ) Debug.Log( $"Begin with {currSpeed} (going {direction})" );
 
             if (redirect)
