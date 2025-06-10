@@ -8,8 +8,10 @@ public class PlayerJumpMovement : MonoBehaviour
     public float jumpStrength = 7f;
     [Tooltip("Override Jump - Override instead of adding velocity when jumping.")]
     public bool overrideJump = false;
-    [Tooltip("Is Airborne - A value. Yeah.")]
+    [HideInInspector]
     public bool isAirborne;
+    [HideInInspector]
+    public bool isCrouching;
     [Tooltip("I do not think I have to explain this.")]
     public KeyCode bindJump = KeyCode.Space;
 
@@ -23,7 +25,7 @@ public class PlayerJumpMovement : MonoBehaviour
 
     public void Jump ( )
     {
-        if ( isAirborne ) return;
+        if ( isAirborne || isCrouching ) return;
         if ( overrideJump )
             rb.linearVelocityY = jumpStrength;
         else

@@ -25,5 +25,6 @@ public class PlayerMain : MonoBehaviour
     public void Update ( )
     {
         pjm.isAirborne = pm.isAirborne;
+        pjm.isCrouching = pm.isCrouching;
     }
 }
