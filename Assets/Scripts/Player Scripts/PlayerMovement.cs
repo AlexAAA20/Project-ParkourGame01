@@ -154,10 +154,10 @@ public class PlayerMovement : MonoBehaviour
 
     [Tooltip("Jump Strength - Power added upwards on jumping while grounded.")]
     public float jumpStrength = 7f;
+    [Tooltip("Jump Speed Boost - Power added upwards is increased by jumpStrength + (linearSpeedX x jumpSpeedBoost).")]
+    public float jumpSpeedBoost = 0.2f;
     [Tooltip("Override Jump - Override instead of adding velocity when jumping.")]
     public bool overrideJump = false;
-    [Tooltip("I do not think I have to explain this.")]
-    public KeyCode bindJump = KeyCode.Space;
 
     [Tooltip("Uncrouched Boxcast - Values for... well, you guessed it - isAirborne.")]
     public RelativeBoxGizmo uncrouchedBoxcast;
@@ -192,6 +192,8 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode bindWalkRight = KeyCode.D;
     [Tooltip("I do not think I have to explain this.")]
     public KeyCode bindCrouch = KeyCode.LeftControl;
+    [Tooltip("I do not think I have to explain this.")]
+    public KeyCode bindJump = KeyCode.Space;
 
     [Header("Debug Settings")]
 
@@ -208,6 +210,8 @@ public class PlayerMovement : MonoBehaviour
     public bool drawDesiredLine = false;        // швидкість (бажана)
     [Tooltip("Gizmo Scale - How big are lines relative to the global grid.")]
     public float gizmoScale = 1f;               // швидкість (бажана)
+    [Tooltip("Log Jumps - Log every jump, mostly velocity + position.")]
+    public bool logJumps = true;
     // TODO: public bool drawOnAirborne = false;         // чи малювати в повітрі
 
     [Header("Rendering")]
@@ -221,9 +225,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if ( isAirborne || isCrouching ) return;
         if ( overrideJump )
-            rb.linearVelocityY = jumpStrength;
+            rb.linearVelocityY = jumpStrength + Mathf.Abs(rb.linearVelocityX * jumpSpeedBoost);
         else
-            rb.linearVelocityY += jumpStrength;
+            rb.linearVelocityY += jumpStrength + rb.linearVelocityX * jumpSpeedBoost;
+        if ( logJumps ) { Debug.Log( $"Jumped at {transform.position} with {jumpStrength} base + " +
+            $"{Mathf.Abs( rb.linearVelocityX * jumpSpeedBoost )} boost {( jumpSpeedBoost > 0 ? "" : "(none)" )}." ); }
     }
 
     // rigidbody
@@ -291,11 +297,9 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.BoxCast(
             transform.position + GetIsAirborneDetector( ).position, GetIsAirborneDetector().size, 0, Vector2.zero
             );
-        if (hit.collider == null)
-        {
-            Debug.Log( "smth" );
-        }
-        isAirborne = hit.collider == null;
+        if ( hit.collider != null )
+            Debug.Log( hit.collider.gameObject.name );
+        isAirborne = hit.collider == null && hit.collider != coll;
     }
 
     public void OnDrawGizmos ( )
