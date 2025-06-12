@@ -150,6 +150,15 @@ public class PlayerMovement : MonoBehaviour
     }
     [Header( "Generic Movement" )]
 
+    [Header("Jump Settings")]
+
+    [Tooltip("Jump Strength - Power added upwards on jumping while grounded.")]
+    public float jumpStrength = 7f;
+    [Tooltip("Override Jump - Override instead of adding velocity when jumping.")]
+    public bool overrideJump = false;
+    [Tooltip("I do not think I have to explain this.")]
+    public KeyCode bindJump = KeyCode.Space;
+
     [Tooltip("Uncrouched Boxcast - Values for... well, you guessed it - isAirborne.")]
     public RelativeBoxGizmo uncrouchedBoxcast;
     [Tooltip("Crouched Boxcast - Values for... well, you guessed it - isAirborne.")]
@@ -208,6 +217,15 @@ public class PlayerMovement : MonoBehaviour
     public Transform texture;
 
 
+    public void Jump ( )
+    {
+        if ( isAirborne || isCrouching ) return;
+        if ( overrideJump )
+            rb.linearVelocityY = jumpStrength;
+        else
+            rb.linearVelocityY += jumpStrength;
+    }
+
     // rigidbody
     Rigidbody2D rb;
 
@@ -230,6 +248,10 @@ public class PlayerMovement : MonoBehaviour
         if ( Input.GetKeyDown( bindCrouch ) || Input.GetKeyUp( bindCrouch ) ) 
         {
             Crouch( );
+        }
+        if ( Input.GetKeyDown( bindJump ) )
+        {
+            Jump( );
         }
     }
 

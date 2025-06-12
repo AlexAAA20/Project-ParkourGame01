@@ -1180,7 +1180,6 @@ GameObject:
   - component: {fileID: 715545573}
   - component: {fileID: 715545574}
   - component: {fileID: 715545575}
-  - component: {fileID: 715545576}
   m_Layer: 0
   m_Name: Runner
   m_TagString: Untagged
@@ -1344,6 +1343,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bbb986fd65f54468bfc72cd187bea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpStrength: 5
+  overrideJump: 0
+  bindJump: 32
   uncrouchedBoxcast:
     position: {x: 0, y: -0.38, z: 0}
     size: {x: 0.5, y: 0.04, z: 1}
@@ -1354,10 +1356,10 @@ MonoBehaviour:
   isAirborne: 0
   isCrouching: 0
   groundedMovement:
-    acceleration: 0.9
-    deceleration: 0.4
+    acceleration: 0.7
+    deceleration: 0.3
     decelerationOnIdle: 1.2
-    maxSpeed: 11
+    maxSpeed: 9
     redirectMinimalSpeed: 0
     memoryLoss: 0
     limitMaxSpeed: 1
@@ -1461,25 +1463,6 @@ MonoBehaviour:
   start: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
   pm: {fileID: 0}
-  pjm: {fileID: 0}
---- !u!114 &715545576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715545568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df871b8322b2f7c4caeb7d31de7ebd70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  jumpStrength: 5
-  overrideJump: 1
-  isAirborne: 0
-  isCrouching: 0
-  bindJump: 32
 --- !u!1 &756291349
 GameObject:
   m_ObjectHideFlags: 0
