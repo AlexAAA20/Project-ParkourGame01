@@ -297,8 +297,6 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.BoxCast(
             transform.position + GetIsAirborneDetector( ).position, GetIsAirborneDetector().size, 0, Vector2.zero
             );
-        if ( hit.collider != null )
-            Debug.Log( hit.collider.gameObject.name );
         isAirborne = hit.collider == null && hit.collider != coll;
     }
 
