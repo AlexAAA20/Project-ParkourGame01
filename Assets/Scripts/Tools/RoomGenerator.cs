@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-
+/*
 public class RoomGenerator : EditorWindow
 {
     Vector2 size;
@@ -57,3 +57,5 @@ public class RoomGenerator : EditorWindow
 
     public void Shape( GameObject thing, Vector2 size ) => thing.transform.localScale = size;
 }
+
+*/
