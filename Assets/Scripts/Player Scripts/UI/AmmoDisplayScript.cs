@@ -16,7 +16,6 @@ public class AmmoDisplayScript : MonoBehaviour
 
     public void Start ( )
     {
-        Restart( stock, true );
         grd.SetKeys(
             new GradientColorKey[] {
             new GradientColorKey(loaded, 1f),
