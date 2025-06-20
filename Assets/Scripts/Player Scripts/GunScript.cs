@@ -15,6 +15,7 @@ public class GunScript : MonoBehaviour
     public AmmoDisplayScript ammoCounter;
     public KeyCode reload = KeyCode.R;
     public int shootMouseButton = 0;
+    public LayerMask ignore;
 
     bool loading;
     Rigidbody2D rb;
@@ -93,7 +94,7 @@ public class GunScript : MonoBehaviour
     {
         // get the thing hit
         Vector2 dir = cursorPos - (Vector2)arm.position;
-        RaycastHit2D hit = Physics2D.Raycast(arm.position, dir, range);
+        RaycastHit2D hit = Physics2D.Raycast(arm.position, dir, range, ~ignore);
         if (hit.rigidbody != null)
         {
             hit.rigidbody.AddForce( dir.normalized * knockback );
