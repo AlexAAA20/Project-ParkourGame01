@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
@@ -12,7 +13,11 @@ public class InventorySystem : MonoBehaviour
 
     public LayerMask ignore;
 
-    List<GameObject> owned;
+    public int limit = 3;
+
+    public Action<bool> OnInventoryUpdate;
+
+    public List<GameObject> owned;
     Vector3 cursorPos;
 
     public void Start ( )
@@ -23,13 +28,14 @@ public class InventorySystem : MonoBehaviour
     public void Update ( ) 
     {
         Aim( );
-        if ( Input.GetMouseButtonDown( 1 ) )
+        if ( Input.GetMouseButtonDown( 1 ) && owned.Count < limit )
         {
             GameObject? fetched = Check( );
             if ( fetched != null )
             {
                 owned.Add( fetched );
                 Debug.Log( fetched.name );
+                OnInventoryUpdate.Invoke( false );
             }
         }
         if ( Input.GetMouseButtonDown( 2 ) && owned.Count > 0 )
@@ -38,6 +44,7 @@ public class InventorySystem : MonoBehaviour
             fetched.SetActive( true );
             fetched.GetComponent<PickUpAble>( ).Unsheathe( ( cursorPos - transform.position ).normalized, transform.position );
             owned.RemoveAt( 0 );
+            OnInventoryUpdate.Invoke( false );
         }
     }
 

@@ -42,10 +42,13 @@ public class DaytimeCycle : MonoBehaviour
     // current cycle
     public Cycle currCycle;
 
+    public bool active = true;
+
     Camera cam;
 
     public void Start ( )
     {
+        active = true;
         cam = GetComponent<Camera>();
         currCycle = cycles.FirstOrDefault(x => x.tag == "daytime") ?? cycles[0];
         if ( cycles.Where( x => x.tag == "daytime").ToList().Count == 0 )
@@ -60,13 +63,34 @@ public class DaytimeCycle : MonoBehaviour
         cam.backgroundColor = currCycle.Gradient( fufilness );
     }
 
+    [ContextMenu( "Next Cycle" )]
+    public void NextCycle ( ) => frames = currCycle.length;
+
+    [ContextMenu( "Reset Cycle" )]
+    public void RestartCycle ( ) => frames = 0;
+
+    [ContextMenu( "Turn Off" )]
+    public void SwitchOff ( ) => active = false;
+
+    [ContextMenu( "Turn Off", true)]
+    public bool ValidateSwitchOff ( ) => active;
+
+    [ContextMenu( "Turn On" )]
+    public void SwitchOn ( ) => active = true;
+
+    [ContextMenu( "Turn On", true )]
+    public bool ValidateSwitchOn ( ) => !active;
+
     public void FixedUpdate ( )
     {
-        frames++;
-        if ( frames > currCycle.length ) 
-        { 
-            frames = 0;
-            currCycle = currCycle.NewSelected( cycles );
+        if ( active )
+        {
+            frames++;
+            if ( frames > currCycle.length )
+            {
+                frames = 0;
+                currCycle = currCycle.NewSelected( cycles );
+            }
         }
     }
 
