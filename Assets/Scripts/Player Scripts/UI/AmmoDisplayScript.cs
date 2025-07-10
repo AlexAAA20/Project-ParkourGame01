@@ -48,7 +48,6 @@ public class AmmoDisplayScript : MonoBehaviour
                 ammo.Add( o );
             }
         }
-        Debug.Log( grd );
         armRenderer.color = grd.Evaluate( (float)gun.currAmmo / (float)gun.maxAmmo );
         for (int i = 0; i < ammo.Count; i++ )
         {

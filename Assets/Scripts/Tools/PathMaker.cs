@@ -127,7 +127,7 @@ namespace Assets.Scripts.Tools
                 case 1:
                     {
                         GUILayout.Label( "Connection Node", EditorStyles.boldLabel );
-                        if ( current == null ) GUI.enabled = false;
+                        if ( current == null ) break;
                         if ( current.attachedTo.Count <= 1 )
                         {
                             EditorGUILayout.HelpBox( "Due to having one connection or none, the slider is turned off. Thank you.", MessageType.Info );
@@ -138,7 +138,6 @@ namespace Assets.Scripts.Tools
                             conSelected = EditorGUILayout.IntSlider( conSelected, 0, current.attachedTo.Count - 1 );
                         }
 
-                        if ( current == null ) GUI.enabled = true;
                         break;
                     }
                 case 2:
