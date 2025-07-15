@@ -173,6 +173,9 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Is Crouching - If you're crouching, true.")]
     public bool isCrouching = false;
 
+    [Tooltip("Stagger Frames - Frames remaining to get out of the stagger. Stagger causes you to act like you're airborne, even if not.")]
+    public int staggerFrames = 0;
+
     [Header( "Side-To-Side Movement" )]
 
     [Tooltip("Grounded Movement - A big folder of things that relate to movement while 'Is Airborne' is false.")]
@@ -251,6 +254,12 @@ public class PlayerMovement : MonoBehaviour
     {
         MoveHorizontal( ReadHorizontalInput( ) );
         CheckAirborn( );
+        if ( staggerFrames > 0 )
+        {
+            staggerFrames--;
+            isAirborne = true;
+        }
+        texture.GetComponent<SpriteRenderer>( ).color = staggerFrames > 0 ? new Color( 1, 0.6f, 0 ) : new Color(0, 0.8f, 1);
         if ( Input.GetKeyDown( bindCrouch ) || Input.GetKeyUp( bindCrouch ) ) 
         {
             Crouch( );
