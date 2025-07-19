@@ -9,13 +9,21 @@ public class DummyEnemy : MonoBehaviour
     public float crouchedSight;
     public float percent { get { return health / maxHealth; } }
     public float speed;
+    public float stoppingForce;
     public float minImpactSpeed;
+    public float minPlayerImpactSpeed;
+    public float durability;
     public float maxImpactSpeed;
     public float impactDamageModifier;
     public float bounce;
     public float bounceCoff;
     public float tossUp;
-    public float knockMulti;
+    public float stunMulti;
+    public float damageMulti;
+    public int memoryTime;
+
+    public bool ignoreProps;
+    public bool friendlyFire;
 
     public bool TakeDamage( float damage )
     {

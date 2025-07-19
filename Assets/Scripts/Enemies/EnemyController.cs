@@ -1,18 +1,17 @@
 using System;
-using System.Globalization;
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class EnemyController : MonoBehaviour
 {
     Transform enemy;
     PlayerMovement pm;
     public LayerMask enemyMask;
+    public LayerMask propMask;
+    LayerMask filter;
     DummyEnemy controls;
     Rigidbody2D rb;
     bool inSight = false;
+    int memory = 0;
 
     public void Start ( )
     {
@@ -20,13 +19,36 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         enemy = GameObject.FindWithTag( "Player" ).transform;
         pm = enemy.GetComponent<PlayerMovement>();
+        if ( controls.ignoreProps )
+        {
+            filter = enemyMask | propMask;
+        }
+        else
+        {
+            filter = enemyMask;
+        }
     }
     public void Update ( )
     {
         Vector2? val = DetectEnemy( );
+        bool legit = true;
+        if ( memory > 0 )
+        {
+            val = ( enemy.position - transform.position ).normalized;
+            legit = false;
+            memory--;
+        }
         if ( val != null )
         {
             rb.AddForceX( val.Value.x * controls.speed, ForceMode2D.Force );
+            if (legit)
+            {
+                memory = controls.memoryTime;
+            }
+        }
+        else
+        {
+            rb.AddForceX( Mathf.MoveTowards( rb.linearVelocityX, 0, controls.stoppingForce ) - rb.linearVelocityX, ForceMode2D.Impulse );
         }
         inSight = val != null;
         DieOnDeath( );
@@ -50,7 +72,7 @@ public class EnemyController : MonoBehaviour
             transform.position, 
             (enemy.position - transform.position).normalized, 
             pm.isCrouching ? controls.crouchedSight : controls.sight, 
-            ~enemyMask);
+            ~filter);
         if ( hit.transform == enemy )
         {
             return ( enemy.position - transform.position ).normalized;
@@ -66,7 +88,7 @@ public class EnemyController : MonoBehaviour
     public void OnCollisionEnter2D ( Collision2D collision )
     {
         Debug.Log( "Had an impact with magnitude of " + collision.relativeVelocity.magnitude );
-        if ( controls.TakeImpactDamage( collision.relativeVelocity.magnitude ) )
+        if ( controls.TakeImpactDamage( collision.relativeVelocity.magnitude - controls.durability ) )
         {
             bool xDominant = collision.relativeVelocity.x > Mathf.Abs(collision.relativeVelocity.y);
             Vector2 vel = new();
@@ -82,15 +104,28 @@ public class EnemyController : MonoBehaviour
             }
             rb.AddForce( vel * controls.bounce / 2 );
         }
-        if ( collision.otherRigidbody != null )
+        if ( collision.relativeVelocity.magnitude > controls.minPlayerImpactSpeed )
         {
-            try
+            if ( collision.rigidbody != null )
             {
-                collision.gameObject.GetComponent<PlayerMovement>( ).staggerFrames += Mathf.FloorToInt( collision.relativeVelocity.magnitude * controls.knockMulti );
+                Debug.Log( collision.rigidbody.name );
+                collision.rigidbody.AddForce( -collision.relativeVelocity * controls.bounceCoff );
+                collision.rigidbody.AddForceY( collision.relativeVelocity.x * controls.tossUp + collision.relativeVelocity.y );
+                if ( controls.friendlyFire )
+                {
+                    try
+                    {
+                        collision.gameObject.GetComponent<DummyEnemy>( ).TakeImpactDamage( collision.relativeVelocity.magnitude );
+                    }
+                    catch ( NullReferenceException ) { }
+                }
+                try
+                {
+                    collision.gameObject.GetComponent<PlayerMovement>( ).staggerFrames += Mathf.FloorToInt( collision.relativeVelocity.magnitude * controls.stunMulti );
+                    collision.gameObject.GetComponent<PlayerMain>( ).Damage( collision.relativeVelocity.magnitude * controls.damageMulti );
+                }
+                catch ( NullReferenceException ) { }
             }
-            catch ( NullReferenceException ) { }
-            collision.otherRigidbody.AddForce( collision.relativeVelocity * controls.bounceCoff );
-            collision.otherRigidbody.AddForceY( collision.relativeVelocity.x * controls.tossUp + collision.relativeVelocity.y );
         }
     }
 }

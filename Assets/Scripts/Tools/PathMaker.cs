@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+/*
 namespace Assets.Scripts.Tools
 {
     internal class PathMaker : EditorWindow
@@ -178,3 +178,4 @@ namespace Assets.Scripts.Tools
         }
     }
 }
+*/

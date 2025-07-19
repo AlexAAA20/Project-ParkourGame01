@@ -176,18 +176,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4bd3732b6ffcd409d07988c3ec1126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
-  maxHealth: 30
-  sight: 11
-  crouchedSight: 4
-  speed: 70
+  health: 15
+  maxHealth: 15
+  sight: 9
+  crouchedSight: 3
+  speed: 25
+  stoppingForce: 0.7
   minImpactSpeed: 9
-  maxImpactSpeed: 15
-  impactDamageModifier: 0.5
-  bounce: 0.8
-  bounceCoff: 200
-  tossUp: 15
-  knockMulti: 2
+  minPlayerImpactSpeed: 6
+  durability: 0
+  maxImpactSpeed: 50
+  impactDamageModifier: 0.7
+  bounce: 150
+  bounceCoff: 20
+  tossUp: 12
+  stunMulti: 0.5
+  damageMulti: 0.2
+  memoryTime: 30
+  ignoreProps: 0
+  friendlyFire: 0
 --- !u!114 &-6746886208184528531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,3 +210,6 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
+  propMask:
+    serializedVersion: 2
+    m_Bits: 128
