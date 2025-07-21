@@ -17,5 +17,20 @@ public class PathManager : MonoBehaviour
 {
 
     public List<PathPiece> path = new List<PathPiece> ();
+    public int children = 0;
+    public void Start ( )
+    {
+        children = transform.childCount;
+    }
 
+    public void Update ( ) 
+    {
+        if ( transform.childCount == 0 && children > 0 )
+        {
+            PopupSystem.CastPopupOutside( PopupController.Colors.Green, "I feel calmer now.", "" );
+        }
+
+
+        children = transform.childCount;
+    }
 }

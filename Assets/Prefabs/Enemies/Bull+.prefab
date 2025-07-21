@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1414106292956987986}
   - component: {fileID: -6746886208184528531}
   m_Layer: 6
-  m_Name: Bull
+  m_Name: Bull+
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5, y: 0.75, z: 0}
-  m_LocalScale: {x: 1.1, y: 0.7, z: 1}
+  m_LocalScale: {x: 1.25, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.6, g: 0.3, b: 0.3, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 3
+  m_Mass: 6
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -176,23 +176,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4bd3732b6ffcd409d07988c3ec1126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 150
-  maxHealth: 150
-  sight: 8
-  crouchedSight: 0.8
-  speed: 80
+  health: 200
+  maxHealth: 200
+  sight: 15
+  crouchedSight: 0
+  speed: 120
   stoppingForce: 0
   minImpactSpeed: 8
   minPlayerImpactSpeed: 6
-  durability: 7
-  maxImpactSpeed: 250
-  impactDamageModifier: 3
-  bounce: 160
-  bounceCoff: 250
-  tossUp: 120
-  stunMulti: 4
-  damageMulti: 4
-  memoryTime: 200
+  durability: 2
+  maxImpactSpeed: 20
+  impactDamageModifier: 0.6
+  bounce: 300
+  bounceCoff: 400
+  tossUp: 150
+  stunMulti: 15
+  damageMulti: 5
+  memoryTime: 450
   ignoreProps: 1
   friendlyFire: 1
 --- !u!114 &-6746886208184528531

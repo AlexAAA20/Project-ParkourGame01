@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PickUpAble : MonoBehaviour
+public class PickUpAble : MonoBehaviour, IUsable
 {
     [Tooltip("Do you toss or just calmly put down?")]
     public bool toss = true;
@@ -23,7 +23,10 @@ public class PickUpAble : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
+    public void Use ( PlayerMain player )
+    {
+        PopupSystem.CastPopupOutside( PopupController.Colors.Basic, "Not sure what I'm supposed to do.", "" );
+    }
     public void Unsheathe ( Vector2 direction, Vector2 initial )
     {
         Debug.Log( direction.normalized );
@@ -35,9 +38,13 @@ public class PickUpAble : MonoBehaviour
             rb.angularVelocity = angularToss;
         }
         transform.rotation = Quaternion.Euler(0, 0, initialRotation);
-
-        Debug.Log( ( toss ? "Threw out " : "Calmly put down " ) + transform.name );
     }
 
     // this is a tag.
+}
+
+
+public interface IUsable
+{
+    public void Use ( PlayerMain player );
 }

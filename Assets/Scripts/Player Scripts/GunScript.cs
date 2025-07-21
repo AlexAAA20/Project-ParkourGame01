@@ -65,6 +65,10 @@ public class GunScript : MonoBehaviour
                     crt = StartCoroutine( Reload( ) );
                 }
             }
+            else
+            {
+                PopupSystem.CastPopupOutside( PopupController.Colors.Basic, "Out of ammo", "" );
+            }
         }
 
     }

@@ -30,6 +30,10 @@ public class DummyEnemy : MonoBehaviour
         if ( Dead( ) ) return false;
         health -= damage;
         health = Mathf.Clamp(health, 0, maxHealth);
+        if ( Dead( ) )
+        {
+            PopupSystem.CastPopupOutside( PopupController.Colors.Green, $"An enemy ({name}) has been defeated", "" );
+        }
         return damage > 0;
     }
     
@@ -40,6 +44,7 @@ public class DummyEnemy : MonoBehaviour
         float damage = Mathf.Min(impactForce, maxImpactSpeed);
         damage -= minImpactSpeed;
         damage *= impactDamageModifier;
+        PopupSystem.CastPopupOutside( PopupController.Colors.Orange, $"An enemy ({name}) was damaged", $"-{Mathf.Round(damage * 10) / 10}" );
         return TakeDamage( damage );
     }
 

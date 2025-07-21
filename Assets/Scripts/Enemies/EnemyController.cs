@@ -103,12 +103,12 @@ public class EnemyController : MonoBehaviour
                 vel.y = collision.relativeVelocity.y;
             }
             rb.AddForce( vel * controls.bounce / 2 );
+            memory += controls.memoryTime / 4;
         }
         if ( collision.relativeVelocity.magnitude > controls.minPlayerImpactSpeed )
         {
             if ( collision.rigidbody != null )
             {
-                Debug.Log( collision.rigidbody.name );
                 collision.rigidbody.AddForce( -collision.relativeVelocity * controls.bounceCoff );
                 collision.rigidbody.AddForceY( collision.relativeVelocity.x * controls.tossUp + collision.relativeVelocity.y );
                 if ( controls.friendlyFire )
@@ -121,7 +121,9 @@ public class EnemyController : MonoBehaviour
                 }
                 try
                 {
-                    collision.gameObject.GetComponent<PlayerMovement>( ).staggerFrames += Mathf.FloorToInt( collision.relativeVelocity.magnitude * controls.stunMulti );
+                    collision.gameObject.GetComponent<PlayerMovement>( ).ReactImpact(Mathf.FloorToInt( collision.relativeVelocity.magnitude * controls.stunMulti ));
+                    PopupSystem.CastPopupOutside( PopupController.Colors.Meh, $"({name}) has staggered you", $"{Mathf.FloorToInt( collision.relativeVelocity.magnitude * controls.stunMulti )} F" );
+                    
                     collision.gameObject.GetComponent<PlayerMain>( ).Damage( collision.relativeVelocity.magnitude * controls.damageMulti );
                 }
                 catch ( NullReferenceException ) { }

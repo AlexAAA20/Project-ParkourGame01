@@ -21,12 +21,19 @@ public class DeathZone : MonoBehaviour
     {
         if (!playerIsTrash)
         {
-            try { collision.transform.GetComponent<PlayerMain>( ).Respawn( ); return; }
+            try { collision.transform.GetComponent<PlayerMain>( ).Respawn( );
+                PopupSystem.CastPopupOutside( PopupController.Colors.Red, "You have died to the killzone.", "" ); 
+                return; 
+            }
             catch { }
         }
         if (killNPCs)
         {
-            try { collision.transform.GetComponent<DummyEnemy>( ).TakeDamage( 9999 ); return; }
+            try {
+                collision.transform.GetComponent<DummyEnemy>( ).health = 0;
+                PopupSystem.CastPopupOutside( PopupController.Colors.Green, $"{collision.transform.name} has died to the killzone.", "" );
+                return; 
+            }
             catch { }
         }
         collision.transform.position = TPTrashAt;

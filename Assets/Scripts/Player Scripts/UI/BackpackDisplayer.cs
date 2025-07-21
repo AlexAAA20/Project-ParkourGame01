@@ -21,7 +21,7 @@ public class BackpackDisplayer : MonoBehaviour
         if (hard)
         {
             Vector2 pos = start;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < inventory.limit; i++)
             {
                 GameObject o = Instantiate(prefab);
                 o.transform.SetParent( transform );
@@ -41,6 +41,9 @@ public class BackpackDisplayer : MonoBehaviour
             }
             catch ( System.Exception ) { }
             text.text = item;
+            if (inventory.selected == i && inventory.owned.Count > 0) text.color = new Color( 1f, 0.6f, 0 );
+            else text.color = new Color( 1, 1, 1 );
+
         }
     }
 }

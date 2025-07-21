@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -223,6 +224,8 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Texture - Object that will change depending on the situation.")]
     public Transform texture;
 
+    public Slider stunner;
+
 
     public void Jump ( )
     {
@@ -250,14 +253,29 @@ public class PlayerMovement : MonoBehaviour
         coll = GetComponent<BoxCollider2D>( );
     }
 
+    public void ReactImpact( int staggerFrames )
+    {
+        stunner.maxValue = staggerFrames;
+        this.staggerFrames = staggerFrames;
+    }
     public void Update ( )
     {
         MoveHorizontal( ReadHorizontalInput( ) );
         CheckAirborn( );
         if ( staggerFrames > 0 )
         {
+            stunner.gameObject.SetActive( true ); 
             staggerFrames--;
+            stunner.value = staggerFrames;
             isAirborne = true;
+            if ( staggerFrames == 0 )
+            {
+                PopupSystem.CastPopupOutside( PopupController.Colors.Alright, "You came out of stagger.", $"{stunner.maxValue} F" );
+            }
+        }
+        else
+        {
+            stunner.gameObject.SetActive( false );
         }
         texture.GetComponent<SpriteRenderer>( ).color = staggerFrames > 0 ? new Color( 1, 0.6f, 0 ) : new Color(0, 0.8f, 1);
         if ( Input.GetKeyDown( bindCrouch ) || Input.GetKeyUp( bindCrouch ) ) 
