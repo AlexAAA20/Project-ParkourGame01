@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         /// </summary>
         /// <param name="rb">Rigidbody. Used for reading and writing the horizontal speed.</param>
         /// <param name="direction">Direction that is used for inputting. From -1 to 1.</param>
-        public void ApplyForce ( Rigidbody2D rb, float direction )
+        public void ApplyForce ( Rigidbody2D rb, float direction, float multiplier )
         {            
             float currSpeed = rb.linearVelocityX;
             if ( frameLog && allowLogging ) Debug.Log( $"Begin with {currSpeed} (going {direction})" );
@@ -136,8 +136,8 @@ public class PlayerMovement : MonoBehaviour
 
             desiredSpeed = _selectedSpeed;
             
-            currSpeed = _selectedSpeed;
-            if ( overshot && forcecapSpeed ) currSpeed = Mathf.Clamp( currSpeed, -maxSpeed, maxSpeed );
+            currSpeed = _selectedSpeed * multiplier;
+            if ( overshot && forcecapSpeed ) currSpeed = Mathf.Clamp( currSpeed, -maxSpeed * multiplier, maxSpeed * multiplier );
             if ( frameLog && allowLogging ) Debug.Log( $"Applied {currSpeed}" );
             rb.linearVelocityX = currSpeed;
         }
@@ -217,6 +217,7 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Log Jumps - Log every jump, mostly velocity + position.")]
     public bool logJumps = true;
     // TODO: public bool drawOnAirborne = false;         // чи малювати в повітрі
+    public float speedMultiplier = 1f;
 
     [Header("Rendering")]
     
@@ -286,6 +287,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump( );
         }
+        speedMultiplier = 1f;
     }
 
     public void Crouch( )
@@ -316,7 +318,7 @@ public class PlayerMovement : MonoBehaviour
         {
             choice = crouchedMovement;
         }
-        choice.ApplyForce( rb, input );
+        choice.ApplyForce( rb, input, speedMultiplier );
     }
 
     public void CheckAirborn( )

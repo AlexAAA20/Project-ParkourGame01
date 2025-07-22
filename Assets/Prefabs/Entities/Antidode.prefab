@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1331821268495092614}
   - component: {fileID: 5037460559375132387}
   - component: {fileID: 4277776672650907467}
-  - component: {fileID: -6741357910760574484}
+  - component: {fileID: -2253032632793111732}
   m_Layer: 7
-  m_Name: Bodysuit
+  m_Name: Antidode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.697937, b: 1, a: 1}
+  m_Color: {r: 0.97871923, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -177,10 +177,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   addHp: 0
-  addArmor: 25
+  addArmor: 0
   used: 0
   uses: 3
---- !u!114 &-6741357910760574484
+  removes:
+  - name: Poisoned
+  - name: Seizure
+  applies: []
+  mainApplies: []
+  changes: []
+  sideChanges: []
+--- !u!114 &-2253032632793111732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toss: 1
-  tossPower: 30
+  tossPower: 40
   angularToss: 70
   appearDistance: 0.5
   initialRotation: 0

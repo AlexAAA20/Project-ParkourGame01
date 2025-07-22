@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using static Medpack;
 
 public class DummyEnemy : MonoBehaviour
 {
@@ -24,7 +27,20 @@ public class DummyEnemy : MonoBehaviour
 
     public bool ignoreProps;
     public bool friendlyFire;
+    public bool prop = false;
+    public List<DropItem> drops = new List<DropItem>();
+    public List<DropItem> lowDrops = new List<DropItem>();
+    public bool ignoreLowDrops = false;
 
+    [Serializable]
+    public class DropItem
+    {
+        public GameObject obj;
+        public float min;
+        public float max;
+    }
+
+    public List<Transfusions> applies;
     public bool TakeDamage( float damage )
     {
         if ( Dead( ) ) return false;

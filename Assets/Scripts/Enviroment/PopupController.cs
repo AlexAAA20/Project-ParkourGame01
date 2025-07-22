@@ -18,7 +18,8 @@ public class PopupController : MonoBehaviour
         Orange,
         Green,
         Meh,
-        Alright
+        Alright,
+        Pink
     }
     
     public void WriteColor( Colors col )
@@ -51,6 +52,9 @@ public class PopupController : MonoBehaviour
 
             case Colors.Alright:
                 sr.color = new Color( 0.8f, 1, 0, 0.4f );
+                break;
+            case Colors.Pink:
+                sr.color = new Color( 1f, 0, 0.6f, 0.4f );
                 break;
         }
     }

@@ -176,9 +176,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1389a0ad0a696e040ae7ec3e14913d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addHp: 5
+  addHp: 20
   addArmor: 0
   used: 0
+  uses: 1
+  removes:
+  - name: Bleeding
+  applies: []
+  mainApplies: []
+  changes:
+  - from: Hard-Bleed
+    to: Bleeding
+    efficency: 0.2
+    keep: 0
+  - from: Poisoned
+    to: Poisoned
+    efficency: 0.75
+    keep: 0
+  - from: Slowed
+    to: Slowed
+    efficency: 0.25
+    keep: 0
+  sideChanges: []
 --- !u!114 &-2253032632793111732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toss: 1
-  tossPower: 30
+  tossPower: 40
   angularToss: 70
   appearDistance: 0.5
   initialRotation: 0

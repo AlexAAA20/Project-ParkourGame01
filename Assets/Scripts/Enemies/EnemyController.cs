@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -30,27 +32,30 @@ public class EnemyController : MonoBehaviour
     }
     public void Update ( )
     {
-        Vector2? val = DetectEnemy( );
-        bool legit = true;
-        if ( memory > 0 )
+        if ( !controls.prop )
         {
-            val = ( enemy.position - transform.position ).normalized;
-            legit = false;
-            memory--;
-        }
-        if ( val != null )
-        {
-            rb.AddForceX( val.Value.x * controls.speed, ForceMode2D.Force );
-            if (legit)
+            Vector2? val = DetectEnemy( );
+            bool legit = true;
+            if ( memory > 0 )
             {
-                memory = controls.memoryTime;
+                val = ( enemy.position - transform.position ).normalized;
+                legit = false;
+                memory--;
             }
+            if ( val != null )
+            {
+                rb.AddForceX( val.Value.x * controls.speed, ForceMode2D.Force );
+                if (legit)
+                {
+                    memory = controls.memoryTime;
+                }
+            }
+            else
+            {
+                rb.AddForceX( Mathf.MoveTowards( rb.linearVelocityX, 0, controls.stoppingForce ) - rb.linearVelocityX, ForceMode2D.Impulse );
+            }
+            inSight = val != null;
         }
-        else
-        {
-            rb.AddForceX( Mathf.MoveTowards( rb.linearVelocityX, 0, controls.stoppingForce ) - rb.linearVelocityX, ForceMode2D.Impulse );
-        }
-        inSight = val != null;
         DieOnDeath( );
     }
 
@@ -82,7 +87,21 @@ public class EnemyController : MonoBehaviour
 
     public void DieOnDeath( )
     {
-        if ( controls.Dead( ) ) Destroy( gameObject );
+        if ( controls.Dead( ) )
+        {
+            float slot = UnityEngine.Random.Range(0f, 100f);
+            List<DummyEnemy.DropItem> selected = enemy.GetComponent<PlayerMain>().hp < 50 && !controls.ignoreLowDrops ? controls.lowDrops : controls.drops;
+            foreach ( var item in selected )
+            {
+                if ( item.min <= slot && item.max >= slot )
+                {
+                    GameObject i = Instantiate(item.obj, transform.parent, true);
+                    i.transform.position = transform.position;
+                    i.name = i.name.Replace( "(Clone)", "" );
+                }
+            }
+            Destroy( gameObject );
+        }
     }
 
     public void OnCollisionEnter2D ( Collision2D collision )
@@ -105,7 +124,7 @@ public class EnemyController : MonoBehaviour
             rb.AddForce( vel * controls.bounce / 2 );
             memory += controls.memoryTime / 4;
         }
-        if ( collision.relativeVelocity.magnitude > controls.minPlayerImpactSpeed )
+        if ( collision.relativeVelocity.magnitude > controls.minPlayerImpactSpeed && !controls.prop )
         {
             if ( collision.rigidbody != null )
             {
@@ -123,7 +142,19 @@ public class EnemyController : MonoBehaviour
                 {
                     collision.gameObject.GetComponent<PlayerMovement>( ).ReactImpact(Mathf.FloorToInt( collision.relativeVelocity.magnitude * controls.stunMulti ));
                     PopupSystem.CastPopupOutside( PopupController.Colors.Meh, $"({name}) has staggered you", $"{Mathf.FloorToInt( collision.relativeVelocity.magnitude * controls.stunMulti )} F" );
-                    
+                    foreach ( var item in controls.applies )
+                    {
+                        Effect eff = null;
+                        bool found = Medpack.TryGetEffect( item.to, out eff );
+                        if ( found )
+                        {
+                            collision.gameObject.GetComponent<PlayerMain>().drseuss.Apply( eff, Mathf.CeilToInt(item.efficency * collision.relativeVelocity.magnitude) );
+                        }
+                        else
+                        {
+                            Debug.LogWarning( $"did not find effect '{item.to}'" );
+                        }
+                    }
                     collision.gameObject.GetComponent<PlayerMain>( ).Damage( collision.relativeVelocity.magnitude * controls.damageMulti );
                 }
                 catch ( NullReferenceException ) { }

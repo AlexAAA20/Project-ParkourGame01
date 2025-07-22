@@ -71,8 +71,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 10}
-  m_SizeDelta: {x: 700, y: 20}
+  m_AnchoredPosition: {x: 0, y: 15}
+  m_SizeDelta: {x: 700, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4744644934725918261
 MonoBehaviour:
@@ -113,7 +113,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 5276629492184049887}
   m_HandleRect: {fileID: 0}
@@ -125,6 +125,41 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1212218718198514230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6044970792592894108}
+  m_Layer: 0
+  m_Name: Effects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6044970792592894108
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212218718198514230}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9052802325295232834}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 50, y: 125}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2024161809894116745
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +237,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 5450061218969917211}
   m_HandleRect: {fileID: 0}
@@ -272,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.5537987, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.8258805, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -563,7 +598,7 @@ MonoBehaviour:
   popup: {fileID: 8562310486601530181, guid: d66eda8573204754e8fea273503c0478, type: 3}
   spacing: {x: 0, y: -55}
   startOffset: {x: 0, y: 225}
-  destroyAfter: 6
+  destroyAfter: 8
 --- !u!1 &4163159965549805104
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,6 +846,7 @@ RectTransform:
   - {fileID: 8725770479895421982}
   - {fileID: 4994341887148450368}
   - {fileID: 7567230726977241194}
+  - {fileID: 6044970792592894108}
   m_Father: {fileID: 4540238435283250262}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -987,7 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.56099313, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.53555834, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1256,8 +1292,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 54}
-  m_SizeDelta: {x: 700, y: 8}
+  m_AnchoredPosition: {x: 0, y: 60}
+  m_SizeDelta: {x: 700, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7037359393142464302
 MonoBehaviour:
@@ -1298,7 +1334,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 4853372445077454331}
   m_HandleRect: {fileID: 0}
@@ -1374,6 +1410,7 @@ GameObject:
   - component: {fileID: 6029281008932646990}
   - component: {fileID: 4048992014236846003}
   - component: {fileID: 7142594185013131708}
+  - component: {fileID: 7160709903333765150}
   m_Layer: 3
   m_Name: Runner
   m_TagString: Player
@@ -1661,6 +1698,9 @@ MonoBehaviour:
   start: {x: 0, y: 0, z: 0}
   rb: {fileID: 0}
   pm: {fileID: 0}
+  pewpew: {fileID: 0}
+  nikeeBag: {fileID: 0}
+  drseuss: {fileID: 0}
   hpBar: {fileID: 1419951214208262945}
   armorBar: {fileID: 4744644934725918261}
   deaths: 0
@@ -1710,6 +1750,43 @@ MonoBehaviour:
   limit: 5
   selected: 0
   owned: []
+--- !u!114 &7160709903333765150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8252031989796847399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90f52a3384f67f41abc494c0c542d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pm: {fileID: 0}
+  effectSample: {fileID: 7927530096176936703, guid: 10cae7e6a6e36be449f5aadf030ed02c, type: 3}
+  effectSprites:
+  - key: Bleeding
+    value: {fileID: -8100392299703061058, guid: 91e7d20c3c98417438bd1ac340b8cacf, type: 3}
+  - key: Hard-Bleed
+    value: {fileID: 8842173250359447922, guid: 91e7d20c3c98417438bd1ac340b8cacf, type: 3}
+  - key: Poisoned
+    value: {fileID: 1573169493372213046, guid: 91e7d20c3c98417438bd1ac340b8cacf, type: 3}
+  - key: Disarmed
+    value: {fileID: -6338796243714801035, guid: 91e7d20c3c98417438bd1ac340b8cacf, type: 3}
+  - key: Crippled
+    value: {fileID: 228439738, guid: 28104cb3b196bee429aa345123a4cea7, type: 3}
+  - key: Slowed
+    value: {fileID: 2072700084899006423, guid: 91e7d20c3c98417438bd1ac340b8cacf, type: 3}
+  - key: Bandaged
+    value: {fileID: -824394604, guid: 28104cb3b196bee429aa345123a4cea7, type: 3}
+  - key: Flag Regeneration
+    value: {fileID: 411500552, guid: 28104cb3b196bee429aa345123a4cea7, type: 3}
+  - key: Seizure
+    value: {fileID: -1401515333, guid: c75e0d169567d8440afa19c8fa425411, type: 3}
+  setter: {fileID: 6044970792592894108}
+  defaultEffect: {fileID: 764337410, guid: 28104cb3b196bee429aa345123a4cea7, type: 3}
+  offset: {x: 0, y: 120, z: 0}
+  start: {x: 0, y: 0, z: 0}
 --- !u!1 &9041878310956191127
 GameObject:
   m_ObjectHideFlags: 0

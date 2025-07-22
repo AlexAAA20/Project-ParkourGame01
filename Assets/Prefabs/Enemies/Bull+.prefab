@@ -176,25 +176,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4bd3732b6ffcd409d07988c3ec1126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
-  maxHealth: 200
-  sight: 15
+  health: 100
+  maxHealth: 100
+  sight: 25
   crouchedSight: 0
-  speed: 120
+  speed: 150
   stoppingForce: 0
-  minImpactSpeed: 8
+  minImpactSpeed: 7
   minPlayerImpactSpeed: 6
-  durability: 2
-  maxImpactSpeed: 20
-  impactDamageModifier: 0.6
-  bounce: 300
-  bounceCoff: 400
-  tossUp: 150
-  stunMulti: 15
-  damageMulti: 5
-  memoryTime: 450
+  durability: 4
+  maxImpactSpeed: 100
+  impactDamageModifier: 1.2
+  bounce: 200
+  bounceCoff: 180
+  tossUp: 80
+  stunMulti: 7
+  damageMulti: 3.5
+  memoryTime: 200
   ignoreProps: 1
-  friendlyFire: 1
+  friendlyFire: 0
+  prop: 0
+  drops:
+  - obj: {fileID: 3737963518046997109, guid: 7c191ffe18e04e244b1971df1373ea9b, type: 3}
+    min: 0
+    max: 100
+  - obj: {fileID: 3737963518046997109, guid: 7c191ffe18e04e244b1971df1373ea9b, type: 3}
+    min: 0
+    max: 20
+  - obj: {fileID: 3737963518046997109, guid: c66158a4e578caf4d9cd2c0996ce0562, type: 3}
+    min: 20
+    max: 50
+  - obj: {fileID: 3737963518046997109, guid: 1f2156adc4634b640a3c34ded7990ef4, type: 3}
+    min: 50
+    max: 70
+  - obj: {fileID: 3737963518046997109, guid: 14ce45826be7c064a903687335db68e0, type: 3}
+    min: 70
+    max: 90
+  - obj: {fileID: 3737963518046997109, guid: 6035c1fe761034746b4275e7a719e69b, type: 3}
+    min: 90
+    max: 100
+  - obj: {fileID: 3737963518046997109, guid: 6035c1fe761034746b4275e7a719e69b, type: 3}
+    min: 90
+    max: 100
+  - obj: {fileID: 3737963518046997109, guid: 6035c1fe761034746b4275e7a719e69b, type: 3}
+    min: 90
+    max: 100
+  lowDrops: []
+  ignoreLowDrops: 1
+  applies:
+  - from: 
+    to: Crippled
+    efficency: 3
+    keep: 0
 --- !u!114 &-6746886208184528531
 MonoBehaviour:
   m_ObjectHideFlags: 0

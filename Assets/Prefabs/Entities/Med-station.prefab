@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -176,10 +176,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1389a0ad0a696e040ae7ec3e14913d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addHp: 12
+  addHp: 40
   addArmor: 0
   used: 0
   uses: 8
+  removes:
+  - name: Bleeding
+  - name: Hard-Bleed
+  - name: Poisoned
+  applies:
+  - name: Disarmed
+    frames: 6
+  - name: Slowed
+    frames: 10
+  - name: Crippled
+    frames: 8
+  changes: []
 --- !u!114 &-6741357910760574484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toss: 1
   tossPower: 30
-  angularToss: 70
+  angularToss: 50
   appearDistance: 0.5
   initialRotation: 0

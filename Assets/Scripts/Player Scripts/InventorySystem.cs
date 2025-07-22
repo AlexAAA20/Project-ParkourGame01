@@ -14,7 +14,7 @@ public class InventorySystem : MonoBehaviour
 
     public LayerMask ignore;
 
-    public int limit = 3;
+    public int limit = 9;
 
     public int selected = 0;
 
@@ -41,6 +41,16 @@ public class InventorySystem : MonoBehaviour
         if ( selected < 0 ) { selected = owned.Count - 1; changed = true; }
         if ( changed ) OnInventoryUpdate.Invoke( false );
 
+        Checkity( KeyCode.Alpha1, 1 );
+        Checkity( KeyCode.Alpha2, 2 );
+        Checkity( KeyCode.Alpha3, 3 );
+        Checkity( KeyCode.Alpha4, 4 );
+        Checkity( KeyCode.Alpha5, 5 );
+        Checkity( KeyCode.Alpha6, 6 );
+        Checkity( KeyCode.Alpha7, 7 );
+        Checkity( KeyCode.Alpha8, 8 );
+        Checkity( KeyCode.Alpha9, 9 );
+
         if ( Input.GetMouseButtonDown( 1 ) && owned.Count < limit )
         {
             GameObject? fetched = Check( );
@@ -52,15 +62,7 @@ public class InventorySystem : MonoBehaviour
         }
         if ( Input.GetKeyDown( KeyCode.F ) && owned.Count > 0 )
         {
-            GameObject fetched = owned[selected];
-            fetched.SetActive( true );
-            fetched.GetComponent<PickUpAble>( ).Unsheathe( ( cursorPos - transform.position ).normalized, transform.position );
-            owned.RemoveAt( selected );
-            if ( selected >= owned.Count )
-            {
-                selected--;
-            }
-            OnInventoryUpdate.Invoke( false );
+            Put( );
         }
         if ( Input.GetKeyDown( KeyCode.E ) && owned.Count > 0 )
         {
@@ -69,7 +71,26 @@ public class InventorySystem : MonoBehaviour
             OnInventoryUpdate.Invoke( false );
         }
     }
+    public void Checkity( KeyCode k, int slot )
+    {
+        if ( Input.GetKeyDown(k) )
+        {
+            selected = slot;
+        }
+    }
 
+    public void Put( )
+    {
+        GameObject fetched = owned[selected];
+        fetched.SetActive( true );
+        fetched.GetComponent<PickUpAble>( ).Unsheathe( ( cursorPos - transform.position ).normalized, transform.position );
+        owned.RemoveAt( selected );
+        if ( selected >= owned.Count )
+        {
+            selected--;
+        }
+        OnInventoryUpdate.Invoke( false );
+    }
 
     public void Aim ( )
     {

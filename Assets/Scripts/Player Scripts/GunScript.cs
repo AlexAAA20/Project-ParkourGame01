@@ -16,6 +16,7 @@ public class GunScript : MonoBehaviour
     public KeyCode reload = KeyCode.R;
     public int shootMouseButton = 0;
     public LayerMask ignore;
+    public bool letFire;
 
     bool loading;
     Rigidbody2D rb;
@@ -47,7 +48,7 @@ public class GunScript : MonoBehaviour
             crt = StartCoroutine( Reload( ) );
         }
 
-        if ( Input.GetMouseButtonDown( shootMouseButton ) )
+        if ( Input.GetMouseButtonDown( shootMouseButton ) && letFire )
         {
             if ( currAmmo > 0 )
             {
@@ -69,6 +70,11 @@ public class GunScript : MonoBehaviour
             {
                 PopupSystem.CastPopupOutside( PopupController.Colors.Basic, "Out of ammo", "" );
             }
+        }
+
+        if ( !letFire )
+        {
+            letFire = true;
         }
 
     }

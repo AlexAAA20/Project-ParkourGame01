@@ -191,10 +191,24 @@ MonoBehaviour:
   bounceCoff: 20
   tossUp: 25
   stunMulti: 0.8
-  damageMulti: 0.2
+  damageMulti: 1.5
   memoryTime: 15
   ignoreProps: 0
   friendlyFire: 0
+  prop: 0
+  drops:
+  - obj: {fileID: 3737963518046997109, guid: 991d75303e80d4f49acf8d4f5a56a9ae, type: 3}
+    min: 0
+    max: 30
+  lowDrops:
+  - obj: {fileID: 3737963518046997109, guid: 991d75303e80d4f49acf8d4f5a56a9ae, type: 3}
+    min: 0
+    max: 80
+  - obj: {fileID: 3737963518046997109, guid: 7c191ffe18e04e244b1971df1373ea9b, type: 3}
+    min: 20
+    max: 100
+  ignoreLowDrops: 0
+  applies: []
 --- !u!114 &-6746886208184528531
 MonoBehaviour:
   m_ObjectHideFlags: 0
