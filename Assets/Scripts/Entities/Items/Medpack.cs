@@ -56,7 +56,7 @@ public class Medpack : MonoBehaviour, IUsable
             {
                 Debug.LogWarning( $"a static effect slot is empty!" );
             }
-            else if ( item.effectName == name ) // NullReferenceException
+            else if ( item.effectName == name )
             {
                 effect = item;
                 return true;
@@ -161,6 +161,3 @@ public class Medpack : MonoBehaviour, IUsable
         }
     }
 }
-// This is a bit of a code that I made for a medpack item.
-// Whenever it is used, it gets a NullReferenceException at line 52.
-// Please help.

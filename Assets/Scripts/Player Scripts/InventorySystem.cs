@@ -75,7 +75,8 @@ public class InventorySystem : MonoBehaviour
     {
         if ( Input.GetKeyDown(k) )
         {
-            selected = slot;
+            selected = slot - 1;
+            OnInventoryUpdate.Invoke( false );
         }
     }
 

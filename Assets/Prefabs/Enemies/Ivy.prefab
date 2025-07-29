@@ -176,24 +176,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4bd3732b6ffcd409d07988c3ec1126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 22
-  maxHealth: 22
+  health: 15
+  maxHealth: 15
   sight: 11
   crouchedSight: 9
-  speed: 70
+  speed: 40
   stoppingForce: 1.4
-  minImpactSpeed: 7
-  minPlayerImpactSpeed: 1
+  minImpactSpeed: 8
+  minPlayerImpactSpeed: 6
   durability: 2
   maxImpactSpeed: 50
-  impactDamageModifier: 0.3
-  bounce: 130
-  bounceCoff: 60
+  impactDamageModifier: 0.75
+  bounce: 160
+  bounceCoff: 80
   tossUp: 40
-  stunMulti: 7
-  damageMulti: 2
-  memoryTime: 40
-  ignoreProps: 1
+  stunMulti: 2
+  damageMulti: 1
+  memoryTime: 60
+  ignoreProps: 0
   friendlyFire: 0
   prop: 0
   drops:
@@ -217,11 +217,11 @@ MonoBehaviour:
   applies:
   - from: 
     to: Seizure
-    efficency: 1
+    efficency: 0.25
     keep: 0
   - from: 
     to: Poisoned
-    efficency: 2
+    efficency: 0.5
     keep: 0
 --- !u!114 &-6746886208184528531
 MonoBehaviour:

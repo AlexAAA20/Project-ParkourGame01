@@ -69,10 +69,10 @@ RectTransform:
   - {fileID: 4242330400313114278}
   m_Father: {fileID: 9052802325295232834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 15}
-  m_SizeDelta: {x: 700, y: 30}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -200, y: 65}
+  m_SizeDelta: {x: 400, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4744644934725918261
 MonoBehaviour:
@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 50, y: 125}
+  m_AnchoredPosition: {x: 50, y: 120}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2024161809894116745
@@ -193,10 +193,10 @@ RectTransform:
   - {fileID: 4564705091217799953}
   m_Father: {fileID: 9052802325295232834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 25}
-  m_SizeDelta: {x: 700, y: 50}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -200, y: 25}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1419951214208262945
 MonoBehaviour:
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
+  m_Color: {r: 1, g: 0.7079148, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1023,7 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.53555834, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.2089934, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1073,10 +1073,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9052802325295232834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -150, y: 75}
-  m_SizeDelta: {x: 300, y: 150}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 75}
+  m_SizeDelta: {x: 800, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2160357397847870657
 CanvasRenderer:
@@ -1129,8 +1129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3062560174006291111, guid: bf5f86a93f1cb9b488d5a1ae6d9f7e4d, type: 3}
-  start: {x: -50, y: -30}
-  offset: {x: 0, y: 22}
+  start: {x: -355, y: 0}
+  offset: {x: 90, y: 0}
   inventory: {fileID: 7142594185013131708}
 --- !u!1 &6900189144217165562
 GameObject:
@@ -1167,8 +1167,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 25}
-  m_SizeDelta: {x: 300, y: 50}
+  m_AnchoredPosition: {x: 200, y: 25}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2367378560314220910
 CanvasRenderer:
@@ -1290,10 +1290,10 @@ RectTransform:
   - {fileID: 5697500632914728411}
   m_Father: {fileID: 9052802325295232834}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 60}
-  m_SizeDelta: {x: 700, y: 20}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 200, y: 60}
+  m_SizeDelta: {x: 400, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7037359393142464302
 MonoBehaviour:
@@ -1664,6 +1664,7 @@ MonoBehaviour:
   drawDesiredLine: 1
   gizmoScale: 0.2
   logJumps: 1
+  speedMultiplier: 1
   texture: {fileID: 6828386846017550421}
   stunner: {fileID: 7037359393142464302}
   isSprinting: 0
@@ -1731,6 +1732,7 @@ MonoBehaviour:
   ignore:
     serializedVersion: 2
     m_Bits: 8
+  letFire: 0
 --- !u!114 &7142594185013131708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1747,7 +1749,7 @@ MonoBehaviour:
   ignore:
     serializedVersion: 2
     m_Bits: 8
-  limit: 5
+  limit: 9
   selected: 0
   owned: []
 --- !u!114 &7160709903333765150
@@ -1781,6 +1783,8 @@ MonoBehaviour:
     value: {fileID: -824394604, guid: 28104cb3b196bee429aa345123a4cea7, type: 3}
   - key: Flag Regeneration
     value: {fileID: 411500552, guid: 28104cb3b196bee429aa345123a4cea7, type: 3}
+  - key: Seizure
+    value: {fileID: -1401515333, guid: c75e0d169567d8440afa19c8fa425411, type: 3}
   - key: Seizure
     value: {fileID: -1401515333, guid: c75e0d169567d8440afa19c8fa425411, type: 3}
   setter: {fileID: 6044970792592894108}
@@ -1845,7 +1849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.2}
+  m_Color: {r: 1, g: 0.25, b: 0.375, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

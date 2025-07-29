@@ -179,28 +179,16 @@ MonoBehaviour:
   addHp: 0
   addArmor: 0
   used: 0
-  uses: 3
+  uses: 2
   removes:
   - name: Slowed
   - name: Crippled
   applies: []
   mainApplies:
-  - name: Bleeding
-    frames: 3
+  - name: Hasty
+    frames: 90
   changes: []
-  sideChanges:
-  - from: Hard-Bleed
-    to: Hard-Bleed
-    efficency: 2
-    keep: 0
-  - from: Bleeding
-    to: Hard-Bleed
-    efficency: 7
-    keep: 0
-  - from: Hard-Bleed
-    to: Poisoned
-    efficency: 2
-    keep: 1
+  sideChanges: []
 --- !u!114 &-2253032632793111732
 MonoBehaviour:
   m_ObjectHideFlags: 0

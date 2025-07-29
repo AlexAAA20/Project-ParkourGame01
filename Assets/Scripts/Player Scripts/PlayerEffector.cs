@@ -148,7 +148,7 @@ public class Effect
     });
     public static Effect hasty = new Effect("Hasty", (x, y) =>
     {
-        y.pm.speedMultiplier += 0.5f;
+        y.pm.speedMultiplier = 1.2f;
         x.intFlag++;
         if ( x.intFlag >= 120 )
         {
@@ -217,7 +217,7 @@ public class Effect
     });
     public static Effect slowed = new Effect("Slowed", (x, y) =>
     {
-        y.pm.speedMultiplier -= 0.5f;
+        y.pm.speedMultiplier = 0.8f;
         x.intFlag++;
         if ( x.intFlag >= 120 )
         {

@@ -195,13 +195,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4bd3732b6ffcd409d07988c3ec1126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 25
-  maxHealth: 25
+  health: 6
+  maxHealth: 6
   sight: 0
   crouchedSight: 0
   speed: 0
   stoppingForce: 0
-  minImpactSpeed: 7
+  minImpactSpeed: 6
   minPlayerImpactSpeed: 0
   durability: 0
   maxImpactSpeed: 30
