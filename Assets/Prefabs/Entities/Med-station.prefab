@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1389a0ad0a696e040ae7ec3e14913d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addHp: 40
+  addHp: 0
   addArmor: 0
   used: 0
   uses: 8
@@ -184,14 +184,12 @@ MonoBehaviour:
   - name: Bleeding
   - name: Hard-Bleed
   - name: Poisoned
-  applies:
-  - name: Disarmed
-    frames: 6
-  - name: Slowed
-    frames: 10
-  - name: Crippled
-    frames: 8
+  applies: []
+  mainApplies:
+  - name: Regeneration
+    frames: 200
   changes: []
+  sideChanges: []
 --- !u!114 &-6741357910760574484
 MonoBehaviour:
   m_ObjectHideFlags: 0

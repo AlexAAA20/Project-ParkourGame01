@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class FlagScript : MonoBehaviour
@@ -9,6 +10,7 @@ public class FlagScript : MonoBehaviour
     bool prevcBC;
     public List<Transform> defenders = new List<Transform>();
     public Transform player;
+    public bool isPortal;
     SpriteRenderer spriteRenderer;
 
     public void Start ( )
@@ -19,7 +21,10 @@ public class FlagScript : MonoBehaviour
 
     public void Update ( )
     {
-        DripCheck( );
+        if ( !isPortal )
+        {
+            DripCheck( );
+        }
         if ( Vector2.Distance((Vector2)player.transform.position, (Vector2)transform.position) < distance && canBeCapped )
         {
             if ( !recaptured )
@@ -33,21 +38,28 @@ public class FlagScript : MonoBehaviour
                 player.GetComponent<PlayerMain>( ).drseuss.Apply( eff, 5, true );
             }
         }
-        if ( prevcBC != canBeCapped )
+        if ( prevcBC != canBeCapped && !isPortal )
         {
             PopupSystem.CastPopupOutside( PopupController.Colors.Alright, $"A flag has been cleared of defenders.", "" );
         }
         if ( recaptured )
         {
-            spriteRenderer.color = new Color( 0, 0.5f, 1 );
+            spriteRenderer.color = isPortal ? new Color( 1, 1, 1 ) : new Color( 0, 0.5f, 1 );
+            if ( isPortal )
+            {
+                Vector3 requiredForce = player.transform.position - transform.position;
+                requiredForce *= 40f;
+
+                player.GetComponent<Rigidbody2D>( ).AddForce(requiredForce);
+            }
         }
         else if ( canBeCapped )
         {
-            spriteRenderer.color = new Color( 1, 1, 1 );
+            spriteRenderer.color = isPortal ? new Color( 0, 1, 0 ) : new Color( 1, 1, 1 );
         }
         else 
         {
-            spriteRenderer.color = new Color( 1, 0, 0 );
+            spriteRenderer.color = isPortal ? new Color( 0, 0, 0, 0 ) : new Color( 1, 0, 0 );
         }
         prevcBC = canBeCapped;
     }

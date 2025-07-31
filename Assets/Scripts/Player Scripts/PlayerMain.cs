@@ -36,6 +36,12 @@ public class PlayerMain : MonoBehaviour
             {
                 item.framesLeft = 0;
             }
+            nikeeBag.selected = 0;
+            foreach ( var item in nikeeBag.owned )
+            {
+                nikeeBag.Put( );
+                nikeeBag.selected++;
+            }
             transform.position = start;
             rb.linearVelocity = Vector3.zero;
             pm.staggerFrames = 0;
@@ -81,7 +87,7 @@ public class PlayerMain : MonoBehaviour
         if ( amount > 50 )
         {
             drseuss.Apply( Effect.harshBleeding, ( int ) amount - 48 );
-            drseuss.Apply( Effect.slowed, ( int ) amount - 48 );
+            drseuss.Apply( Effect.adrenaline, ( int ) amount - 28 );
         }
         else if ( amount > 30 )
         {

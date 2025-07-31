@@ -130,13 +130,13 @@ public class PlayerMovement : MonoBehaviour
 
             if ( !(overshot && Mathf.Abs(_selectedSpeed + direction * acceleration) > maxSpeed) )
             {
-                _selectedSpeed += direction * acceleration;
+                _selectedSpeed += direction * acceleration * multiplier;
                 if ( accelerationLog && allowLogging ) Debug.Log( $"Applied +{acceleration} velocity ({currSpeed})" );
             }
 
             desiredSpeed = _selectedSpeed;
             
-            currSpeed = _selectedSpeed * multiplier;
+            currSpeed = _selectedSpeed;
             if ( overshot && forcecapSpeed ) currSpeed = Mathf.Clamp( currSpeed, -maxSpeed * multiplier, maxSpeed * multiplier );
             if ( frameLog && allowLogging ) Debug.Log( $"Applied {currSpeed}" );
             rb.linearVelocityX = currSpeed;

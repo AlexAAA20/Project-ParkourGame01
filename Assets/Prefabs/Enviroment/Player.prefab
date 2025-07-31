@@ -1772,23 +1772,37 @@ MonoBehaviour:
   - key: Hard-Bleed
     value: {fileID: 8842173250359447922, guid: 91e7d20c3c98417438bd1ac340b8cacf, type: 3}
   - key: Poisoned
-    value: {fileID: 1573169493372213046, guid: 91e7d20c3c98417438bd1ac340b8cacf, type: 3}
+    value: {fileID: 1573461560, guid: c75e0d169567d8440afa19c8fa425411, type: 3}
   - key: Disarmed
     value: {fileID: -6338796243714801035, guid: 91e7d20c3c98417438bd1ac340b8cacf, type: 3}
   - key: Crippled
-    value: {fileID: 228439738, guid: 28104cb3b196bee429aa345123a4cea7, type: 3}
+    value: {fileID: -7000616599100294567, guid: 91e7d20c3c98417438bd1ac340b8cacf, type: 3}
   - key: Slowed
-    value: {fileID: 2072700084899006423, guid: 91e7d20c3c98417438bd1ac340b8cacf, type: 3}
+    value: {fileID: 228439738, guid: 28104cb3b196bee429aa345123a4cea7, type: 3}
   - key: Bandaged
     value: {fileID: -824394604, guid: 28104cb3b196bee429aa345123a4cea7, type: 3}
   - key: Flag Regeneration
     value: {fileID: 411500552, guid: 28104cb3b196bee429aa345123a4cea7, type: 3}
   - key: Seizure
     value: {fileID: -1401515333, guid: c75e0d169567d8440afa19c8fa425411, type: 3}
-  - key: Seizure
-    value: {fileID: -1401515333, guid: c75e0d169567d8440afa19c8fa425411, type: 3}
+  - key: Hasty
+    value: {fileID: -698572382, guid: c75e0d169567d8440afa19c8fa425411, type: 3}
+  - key: Rambo Mode
+    value: {fileID: -4071215139181839544, guid: 01e3d501a9616624e8e64d3262ed0c55, type: 3}
+  - key: Regeneration
+    value: {fileID: 504155632261615411, guid: 01e3d501a9616624e8e64d3262ed0c55, type: 3}
+  - key: Nanobot
+    value: {fileID: 6984303997927501720, guid: 01e3d501a9616624e8e64d3262ed0c55, type: 3}
+  - key: Cast Immunity
+    value: {fileID: 5604160104258818671, guid: 01e3d501a9616624e8e64d3262ed0c55, type: 3}
+  - key: Poison Immunity
+    value: {fileID: -3860665521418855438, guid: 01e3d501a9616624e8e64d3262ed0c55, type: 3}
+  - key: Adrenaline-d
+    value: {fileID: -8179224855491070515, guid: 01e3d501a9616624e8e64d3262ed0c55, type: 3}
+  - key: Broken World
+    value: {fileID: -5554912947894000080, guid: 01e3d501a9616624e8e64d3262ed0c55, type: 3}
   setter: {fileID: 6044970792592894108}
-  defaultEffect: {fileID: 764337410, guid: 28104cb3b196bee429aa345123a4cea7, type: 3}
+  defaultEffect: {fileID: -698572382, guid: c75e0d169567d8440afa19c8fa425411, type: 3}
   offset: {x: 0, y: 120, z: 0}
   start: {x: 0, y: 0, z: 0}
 --- !u!1 &9041878310956191127

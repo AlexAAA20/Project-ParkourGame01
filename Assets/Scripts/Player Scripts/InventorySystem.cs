@@ -18,6 +18,8 @@ public class InventorySystem : MonoBehaviour
 
     public int selected = 0;
 
+    int itemCount = 0;
+
     public Action<bool> OnInventoryUpdate;
 
     public List<GameObject> owned;
@@ -28,6 +30,10 @@ public class InventorySystem : MonoBehaviour
     {
         owned = new List<GameObject>();
         pm = GameObject.FindGameObjectWithTag( "Player" ).GetComponent<PlayerMain>();
+        for (int i = 0; i < limit; i++)
+        {
+            owned.Add( null );
+        }
     }
 
     public void Update ( ) 
@@ -51,20 +57,24 @@ public class InventorySystem : MonoBehaviour
         Checkity( KeyCode.Alpha8, 8 );
         Checkity( KeyCode.Alpha9, 9 );
 
-        if ( Input.GetMouseButtonDown( 1 ) && owned.Count < limit )
+        if ( Input.GetMouseButtonDown( 1 ) && itemCount < limit )
         {
             GameObject? fetched = Check( );
             if ( fetched != null )
             {
-                owned.Add( fetched );
+                for ( int i = 0; i < limit; i++ )
+                {
+                    if ( owned[i] == null ) { owned[i] = fetched; break; }
+                }
+                itemCount++;
                 OnInventoryUpdate.Invoke( false );
             }
         }
-        if ( Input.GetKeyDown( KeyCode.F ) && owned.Count > 0 )
+        if ( Input.GetKeyDown( KeyCode.F ) && itemCount > 0 )
         {
             Put( );
         }
-        if ( Input.GetKeyDown( KeyCode.E ) && owned.Count > 0 )
+        if ( Input.GetKeyDown( KeyCode.E ) && itemCount > 0 )
         {
             IUsable component = owned[selected].GetComponent<IUsable>( );
             component.Use( pm );
@@ -82,10 +92,12 @@ public class InventorySystem : MonoBehaviour
 
     public void Put( )
     {
+        if ( owned[selected] == null ) return;
         GameObject fetched = owned[selected];
         fetched.SetActive( true );
         fetched.GetComponent<PickUpAble>( ).Unsheathe( ( cursorPos - transform.position ).normalized, transform.position );
-        owned.RemoveAt( selected );
+        owned[selected] = null;
+        itemCount--;
         if ( selected >= owned.Count )
         {
             selected--;

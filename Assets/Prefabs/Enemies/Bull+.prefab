@@ -179,20 +179,20 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   sight: 25
-  crouchedSight: 0
-  speed: 150
+  crouchedSight: 2
+  speed: 120
   stoppingForce: 0
   minImpactSpeed: 7
   minPlayerImpactSpeed: 6
   durability: 4
   maxImpactSpeed: 100
   impactDamageModifier: 1.2
-  bounce: 200
-  bounceCoff: 180
-  tossUp: 80
-  stunMulti: 7
-  damageMulti: 3.5
-  memoryTime: 200
+  bounce: 400
+  bounceCoff: 350
+  tossUp: 120
+  stunMulti: 15
+  damageMulti: 2.5
+  memoryTime: 180
   ignoreProps: 1
   friendlyFire: 0
   prop: 0

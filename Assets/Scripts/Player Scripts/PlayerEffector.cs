@@ -125,6 +125,78 @@ public class Effect
             x.intFlag = 0;
         }
     });
+    public static Effect regeneration = new Effect("Regeneration", (x, y) =>
+    {
+        x.intFlag++;
+        if ( x.intFlag >= 60 )
+        {
+            y.Heal(1, true);
+            x.framesLeft--;
+            x.intFlag = 0;
+        }
+    }, true);
+    public static Effect ramboMode = new Effect("Rambo Mode", (x, y) =>
+    {
+        y.pewpew.currAmmo = y.pewpew.maxAmmo;
+        x.intFlag++;
+        if ( x.intFlag >= 120 )
+        {
+            x.framesLeft--;
+            x.intFlag = 0;
+        }
+    }, true);
+    public static Effect immunePoison = new Effect("Poison Immunity", (x, y) =>
+    {
+        foreach (var item in x.pe.effects)
+        {
+            if ( item.effectName == "Poisoned" || item.effectName == "Seizure" )
+            {
+                x.framesLeft -= item.framesLeft;
+                item.framesLeft = 0;
+                if ( x.framesLeft <= 0 )
+                {
+                    PopupSystem.CastPopupOutside( PopupController.Colors.Red, $"The antidode lost it's power.", "" );
+                }
+            }
+        }
+        x.intFlag++;
+        if ( x.intFlag >= 120 )
+        {
+            x.framesLeft--;
+            x.intFlag = 0;
+        }
+    }, true);
+    public static Effect immuneCripple = new Effect("Cast Immunity", (x, y) =>
+    {
+        foreach (var item in x.pe.effects)
+        {
+            if ( item.effectName == "Slowed" || item.effectName == "Crippled" )
+            {
+                x.framesLeft -= item.framesLeft;
+                item.framesLeft = 0;
+                if ( x.framesLeft <= 0 )
+                {
+                    PopupSystem.CastPopupOutside( PopupController.Colors.Red, $"The cast split in half.", "" );
+                }
+            }
+        }
+        x.intFlag++;
+        if ( x.intFlag >= 120 )
+        {
+            x.framesLeft--;
+            x.intFlag = 0;
+        }
+    }, true);
+    public static Effect armoredUp = new Effect("Nanobot", (x, y) =>
+    {
+        y.Armor(0.2f, true);
+        x.intFlag++;
+        if ( x.intFlag >= 30 )
+        {
+            x.framesLeft--;
+            x.intFlag = 0;
+        }
+    }, true);
     public static Effect harshBleeding = new Effect("Hard-Bleed", (x, y) =>
     {
         x.intFlag++;
@@ -148,14 +220,34 @@ public class Effect
     });
     public static Effect hasty = new Effect("Hasty", (x, y) =>
     {
-        y.pm.speedMultiplier = 1.2f;
+        y.pm.speedMultiplier = 1.6f;
         x.intFlag++;
-        if ( x.intFlag >= 120 )
+        if ( x.intFlag >= 60 )
         {
             x.framesLeft--;
             x.intFlag = 0;
         }
     }, true);
+    public static Effect adrenaline = new Effect("Adrenaline-d", (x, y) =>
+    {
+        y.pm.speedMultiplier = 3f;
+        x.intFlag++;
+        if ( x.intFlag >= 30 )
+        {
+            x.framesLeft--;
+            x.intFlag = 0;
+        }
+    });
+    public static Effect bloodhurl = new Effect("Bloodhurl", (x, y) =>
+    {
+        x.intFlag++;
+        if ( x.intFlag >= 60 )
+        {
+            y.Damage(x.framesLeft, true);
+            x.framesLeft = x.framesLeft + 1;
+            x.intFlag = 0;
+        }
+    } );
 
     public static Effect bandaged = new Effect("Bandaged", (x, y) =>
     {
@@ -219,7 +311,7 @@ public class Effect
     {
         y.pm.speedMultiplier = 0.8f;
         x.intFlag++;
-        if ( x.intFlag >= 120 )
+        if ( x.intFlag >= 60 )
         {
             x.framesLeft--;
             x.intFlag = 0;
@@ -230,7 +322,7 @@ public class Effect
         x.intFlag++;
         if ( x.intFlag >= 120 )
         {
-            if ( !y.pm.isAirborne ) y.rb.linearVelocityX *= 0.2f;
+            if ( !y.pm.isAirborne ) y.pm.speedMultiplier = 0.3f;
             x.framesLeft--;
             x.intFlag = 0;
         }
@@ -238,11 +330,11 @@ public class Effect
     public static Effect seizure = new Effect("Seizure", (x, y) =>
     {
         x.intFlag++;
+        y.pm.speedMultiplier *= -1f;
         if ( x.intFlag >= 60 )
         {
             x.framesLeft--;
             x.intFlag = 0;
-            y.rb.linearVelocityX += UnityEngine.Random.Range(-3f, 3f);
         }
     });
 
@@ -259,7 +351,9 @@ public class Effect
 
     public static List<Effect> baseEffects = new List<Effect>()
     {
-        bleeding, harshBleeding, poisoned, crippled, disarmed, slowed, slippery, bandaged, seizure, flagRegeneration, hasty
+        bleeding, harshBleeding, poisoned, crippled, disarmed, slowed, slippery, // base
+        bandaged, seizure, flagRegeneration, hasty, // update 2
+        regeneration, armoredUp, bloodhurl, adrenaline, immuneCripple, immunePoison, ramboMode // update 3
     };
 
     public int framesLeft;
