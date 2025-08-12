@@ -30,6 +30,16 @@ public class PlayerMain : MonoBehaviour
     public void Update ( )
     {
         CheckArmor( );
+        if ( FinishLine.end )
+        {
+            drseuss.enabled = false;
+            pewpew.enabled = false;
+            nikeeBag.enabled = false;
+            pewpew.ammoCounter.transform.parent.gameObject.SetActive( false );
+            pm.enabled = false;
+            enabled = false;
+            PopupSystem.CastPopupOutside( PopupController.Colors.Green, "GGS!", $":D" );
+        }
         if ( respawning )
         {
             foreach (var item in drseuss.effects)
@@ -54,7 +64,7 @@ public class PlayerMain : MonoBehaviour
             {
                 respawning = false;
                 deaths++;
-                PopupSystem.CastPopupOutside( PopupController.Colors.Basic, "You respawned.", $"{deaths} times" );
+                PopupSystem.CastPopupOutside( PopupController.Colors.Red, "You respawned.", $"{deaths}#" );
             }
         }
     }

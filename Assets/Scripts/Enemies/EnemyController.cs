@@ -95,7 +95,7 @@ public class EnemyController : MonoBehaviour
             {
                 if ( item.min <= slot && item.max >= slot )
                 {
-                    GameObject i = Instantiate(item.obj, transform.parent, true);
+                    GameObject i = Instantiate(item.obj, transform.parent.parent, true);
                     i.transform.position = transform.position;
                     i.name = i.name.Replace( "(Clone)", "" );
                 }

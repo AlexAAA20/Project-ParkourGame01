@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 6
+  m_Mass: 3
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -176,23 +176,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4bd3732b6ffcd409d07988c3ec1126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
-  sight: 25
-  crouchedSight: 2
-  speed: 120
+  health: 60
+  maxHealth: 60
+  sight: 6
+  crouchedSight: 0
+  speed: 70
   stoppingForce: 0
-  minImpactSpeed: 7
-  minPlayerImpactSpeed: 6
+  minImpactSpeed: 11
+  minPlayerImpactSpeed: 4
   durability: 4
-  maxImpactSpeed: 100
-  impactDamageModifier: 1.2
-  bounce: 400
-  bounceCoff: 350
-  tossUp: 120
-  stunMulti: 15
-  damageMulti: 2.5
-  memoryTime: 180
+  maxImpactSpeed: 20
+  impactDamageModifier: 0.8
+  bounce: 120
+  bounceCoff: 450
+  tossUp: 150
+  stunMulti: 17
+  damageMulti: 2
+  memoryTime: 120
   ignoreProps: 1
   friendlyFire: 0
   prop: 0
@@ -221,11 +221,18 @@ MonoBehaviour:
   - obj: {fileID: 3737963518046997109, guid: 6035c1fe761034746b4275e7a719e69b, type: 3}
     min: 90
     max: 100
+  - obj: {fileID: 3737963518046997109, guid: 6035c1fe761034746b4275e7a719e69b, type: 3}
+    min: 90
+    max: 100
   lowDrops: []
   ignoreLowDrops: 1
   applies:
   - from: 
     to: Crippled
+    efficency: 2
+    keep: 0
+  - from: 
+    to: Slowed
     efficency: 3
     keep: 0
 --- !u!114 &-6746886208184528531

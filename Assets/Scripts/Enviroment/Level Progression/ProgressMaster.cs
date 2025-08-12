@@ -3,11 +3,25 @@ using UnityEngine;
 
 public class ProgressMaster : MonoBehaviour
 {
+    // It appears that I am not the only spy.
+    //     - Blu Spy (Meet The Spy)
+
     public List<FlagScript> flags = new List<FlagScript>();
     public List<EnemySpawner> toTrigger = new List<EnemySpawner>();
     public FlagScript portal;
     public FinishLine gg;
+    EndpanelGrader what;
     public bool active = false;
+
+    public void Start ( )
+    {
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA( );
+    }
+
+    public void AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ( )
+    {
+        what = FindFirstObjectByType<EndpanelGrader>( );
+    }
 
     public void Update ( )
     {
@@ -34,7 +48,9 @@ public class ProgressMaster : MonoBehaviour
         if ( portal.recaptured == true )
         {
             gg.Endgame( );
+            what.Endgame( );
             Destroy( this );
         }
     }
+    // line 13 is a joke btw
 }

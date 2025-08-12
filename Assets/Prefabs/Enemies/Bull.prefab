@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -180,18 +180,18 @@ MonoBehaviour:
   maxHealth: 40
   sight: 7
   crouchedSight: 0.8
-  speed: 60
+  speed: 50
   stoppingForce: 0
   minImpactSpeed: 6
   minPlayerImpactSpeed: 5
-  durability: 2
+  durability: 0
   maxImpactSpeed: 40
   impactDamageModifier: 0.7
-  bounce: 160
-  bounceCoff: 120
-  tossUp: 40
-  stunMulti: 2.25
-  damageMulti: 4
+  bounce: 140
+  bounceCoff: 80
+  tossUp: 60
+  stunMulti: 2
+  damageMulti: 1
   memoryTime: 150
   ignoreProps: 1
   friendlyFire: 0

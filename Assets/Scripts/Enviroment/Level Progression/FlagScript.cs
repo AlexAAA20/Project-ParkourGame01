@@ -32,7 +32,7 @@ public class FlagScript : MonoBehaviour
                 recaptured = true;
                 PopupSystem.CastPopupOutside( PopupController.Colors.Green, $"A flag has been capped.", "" );
             }
-            else
+            else if ( !isPortal )
             {
                 Medpack.TryGetEffect( "Flag Regeneration", out Effect eff );
                 player.GetComponent<PlayerMain>( ).drseuss.Apply( eff, 5, true );
@@ -47,8 +47,8 @@ public class FlagScript : MonoBehaviour
             spriteRenderer.color = isPortal ? new Color( 1, 1, 1 ) : new Color( 0, 0.5f, 1 );
             if ( isPortal )
             {
-                Vector3 requiredForce = player.transform.position - transform.position;
-                requiredForce *= 40f;
+                Vector3 requiredForce = transform.position - player.transform.position;
+                requiredForce *= 20f;
 
                 player.GetComponent<Rigidbody2D>( ).AddForce(requiredForce);
             }
