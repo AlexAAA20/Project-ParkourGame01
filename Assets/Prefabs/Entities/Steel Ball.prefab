@@ -134,6 +134,8 @@ MonoBehaviour:
   angularToss: 0
   appearDistance: 0.7
   initialRotation: 0
+  textColor: {r: 1, g: 1, b: 1, a: 1}
+  bgColor: {r: 0.2509804, g: 0.5019608, b: 0.7490196, a: 1}
 --- !u!58 &1836390457878680957
 CircleCollider2D:
   m_ObjectHideFlags: 0

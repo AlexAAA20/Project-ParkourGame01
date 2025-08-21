@@ -183,6 +183,8 @@ MonoBehaviour:
   angularToss: 0
   appearDistance: 0.7
   initialRotation: 0
+  textColor: {r: 1, g: 1, b: 1, a: 1}
+  bgColor: {r: 0.7490196, g: 0.2509804, b: 0.7490196, a: 1}
 --- !u!114 &9037457112642433948
 MonoBehaviour:
   m_ObjectHideFlags: 0

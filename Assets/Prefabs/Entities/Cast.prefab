@@ -205,3 +205,5 @@ MonoBehaviour:
   angularToss: 200
   appearDistance: 0.5
   initialRotation: 0
+  textColor: {r: 1, g: 1, b: 1, a: 1}
+  bgColor: {r: 0.2509804, g: 0.5019608, b: 0.7490196, a: 1}

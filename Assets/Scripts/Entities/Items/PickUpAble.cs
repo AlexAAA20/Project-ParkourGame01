@@ -17,6 +17,9 @@ public class PickUpAble : MonoBehaviour, IUsable
     [Tooltip("How is the object turned when it's put.")]
     public float initialRotation;
 
+    public Color textColor = Color.white;
+    public Color bgColor = Color.gray;
+
     Rigidbody2D rb;
 
     public void Start ( )

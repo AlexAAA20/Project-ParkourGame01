@@ -38,6 +38,7 @@ public class Medpack : MonoBehaviour, IUsable
     string originalName = string.Empty;
     int maxUses = 0;
     Color originalColor;
+    PickUpAble pua;
     SpriteRenderer sr;
 
     public void Start ( )
@@ -46,6 +47,7 @@ public class Medpack : MonoBehaviour, IUsable
         originalName = gameObject.name;
         sr = GetComponent<SpriteRenderer>();
         originalColor = sr.color;
+        pua = GetComponent<PickUpAble>();
     }
 
     public static bool TryGetEffect( string name, out Effect effect )
@@ -141,12 +143,14 @@ public class Medpack : MonoBehaviour, IUsable
                 if (uses <= 0 )
                 {
                     used = true;
-                    name = originalName + " E";
+                    name = originalName + " 0.";
                     sr.color = new Color( 0.5f, 0.5f, 0.5f );
+                    pua.bgColor = new Color( 0.2f, 0.2f, 0.2f );
+                    pua.textColor = new Color( 0.7f, 0.7f, 0.7f );
                 }
                 else
                 {
-                    name = originalName + $" {uses} L";
+                    name = originalName + $" {uses}.";
                 }
                 PopupSystem.CastPopupOutside( PopupController.Colors.Green, $"Yummers!", ":)" );
             }

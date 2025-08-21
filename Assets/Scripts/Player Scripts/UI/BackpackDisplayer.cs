@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using static Unity.Cinemachine.IInputAxisOwner.AxisDescriptor;
 
 public class BackpackDisplayer : MonoBehaviour
 {
@@ -38,12 +41,24 @@ public class BackpackDisplayer : MonoBehaviour
             try
             {
                 item = inventory.owned[i].gameObject.name;
+
+                PickUpAble things = inventory.owned[i].GetComponent<PickUpAble>( );
+                Image img = text.transform.GetChild( 0 ).GetComponent<Image>();
+                text.color = things.textColor;
+                img.color = new Color( things.bgColor.r, things.bgColor.g, things.bgColor.b, 0.6f );
             }
             catch ( System.Exception ) { }
             text.text = item;
-            if (inventory.selected == i && inventory.owned.Count > 0) text.color = new Color( 1f, 0.6f, 0 );
-            else text.color = new Color( 1, 1, 1 );
-
+            Image ximagex = text.transform.GetChild( 0 ).GetComponent<Image>();
+            if ( item == "..." )
+            {
+                text.color = new Color( 1f, 0.6f, 0 );
+                ximagex.color = new Color( 0.1f, 0.1f, 0.1f, 0.8f );
+            }
+            if ( inventory.selected == i && item != "..." )
+            {
+                ximagex.color = ximagex.color.WithAlpha( 0.2f );
+            }
         }
     }
 }
