@@ -11,9 +11,10 @@ public class PopupSystem : MonoBehaviour
     List<PopupController> popups;
     public static Action<PopupController.Colors, string, string> createPopup;
 
-    public void Start ( )
+    public void Awake ( )
     {
         popups = new List<PopupController>( ) { };
+        createPopup = null;
         createPopup += CastPopup;
     }
 

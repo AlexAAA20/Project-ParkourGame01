@@ -8,7 +8,10 @@ public class FinishLine : MonoBehaviour
     public float speed = 1.01f;
     public List<Transform> listOfThingsToGenocide = new List<Transform>();
     public List<Transform> listOfThingsToUnGenocide = new List<Transform>();
-
+    void Awake ( )
+    {
+        FinishLine.end = false;
+    }
     public void Endgame( )
     {
         end = true;

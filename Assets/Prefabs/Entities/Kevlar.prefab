@@ -177,18 +177,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   addHp: 0
-  addArmor: 20
+  addArmor: 30
   used: 0
   uses: 1
   removes: []
   applies: []
+  mainApplies: []
   changes:
   - from: Hard-Bleed
     to: Hard-Bleed
     efficency: 0.95
+    keep: 0
   - from: Bleeding
     to: Bleeding
     efficency: 0.8
+    keep: 0
+  sideChanges: []
 --- !u!114 &-6741357910760574484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toss: 1
-  tossPower: 40
-  angularToss: 70
+  tossPower: 50
+  angularToss: 200
   appearDistance: 0.5
   initialRotation: 0

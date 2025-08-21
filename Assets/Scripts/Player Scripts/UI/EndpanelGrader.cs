@@ -1,9 +1,20 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class EndpanelGrader : MonoBehaviour
 {
+    [Serializable]
+    public class Rating
+    {
+        public string grade;
+        public string comment;
+        public Color col;
+        public float score;
+    }
+
+
     public TMP_Text kills;
     public TMP_Text time;
     public TMP_Text deaths;
@@ -18,6 +29,7 @@ public class EndpanelGrader : MonoBehaviour
     public TMP_Text comment;
 
     public TMP_Text timer;
+    public List<Rating> ratings;
 
     float reqTime = 300;
     bool ended = false;
@@ -41,8 +53,8 @@ public class EndpanelGrader : MonoBehaviour
         }
         else
         {
-            float secs = Mathf.Round((float)(DateTime.Now - start).TotalSeconds * 10) / 10;
-            timer.text = $"{Mathf.Round( (secs % 60) * 10 ) / 10}s {( int ) secs / 60}m";
+            float secs = Mathf.Round((float)(DateTime.Now - start).TotalSeconds * 1000) / 1000;
+            timer.text = $"{Mathf.Round( (secs % 60) * 1000 ) / 1000}s {( int ) secs / 60}m";
         }
     }
 
@@ -78,6 +90,17 @@ public class EndpanelGrader : MonoBehaviour
 
         float sum = percentageK + percentageD + percentageT;
         sum /= 3;
-        total.text = $"{Mathf.Round( sum )}%";
+        sum = Mathf.Round( sum );
+        total.text = $"{sum}%";
+
+        foreach (var item in ratings)
+        {
+            if ( sum <= item.score )
+            {
+                grade.text = item.grade;
+                grade.color = item.col;
+                comment.text = item.comment;
+            }
+        }
     }
 }

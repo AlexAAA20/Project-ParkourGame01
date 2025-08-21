@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9037457112642433948}
   - component: {fileID: 2784400029970690768}
   m_Layer: 7
-  m_Name: Medical Crate
+  m_Name: Good Crate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,9 +81,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.6337871, b: 0, a: 1}
+  m_Color: {r: 0.3, g: 0.5, b: 0.35, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -178,9 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86a43e99c954874a94934091fd0f334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toss: 0
-  tossPower: 300
-  angularToss: 500
+  toss: 1
+  tossPower: 50
+  angularToss: 0
   appearDistance: 0.7
   initialRotation: 0
 --- !u!114 &9037457112642433948
@@ -195,8 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4bd3732b6ffcd409d07988c3ec1126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
-  maxHealth: 20
+  health: 13
+  maxHealth: 13
   sight: 0
   crouchedSight: 0
   speed: 0
@@ -205,46 +205,52 @@ MonoBehaviour:
   minPlayerImpactSpeed: 0
   durability: 0
   maxImpactSpeed: 30
-  impactDamageModifier: 0.2
+  impactDamageModifier: 1.5
   bounce: 50
   bounceCoff: 0
   tossUp: 0
   stunMulti: 0
   damageMulti: 0
   memoryTime: 0
+  limitSpeed: 0
+  jumpPower: 0
+  dropStacks: 1
   ignoreProps: 0
   friendlyFire: 1
   prop: 1
   drops:
   - obj: {fileID: 3737963518046997109, guid: 7c191ffe18e04e244b1971df1373ea9b, type: 3}
-    min: 30
-    max: 100
-  - obj: {fileID: 3737963518046997109, guid: 7c191ffe18e04e244b1971df1373ea9b, type: 3}
     min: 0
     max: 100
-  - obj: {fileID: 3737963518046997109, guid: 991d75303e80d4f49acf8d4f5a56a9ae, type: 3}
+  - obj: {fileID: 3737963518046997109, guid: 14ce45826be7c064a903687335db68e0, type: 3}
     min: 0
     max: 100
-  - obj: {fileID: 3737963518046997109, guid: 991d75303e80d4f49acf8d4f5a56a9ae, type: 3}
-    min: 0
-    max: 100
-  - obj: {fileID: 3737963518046997109, guid: 991d75303e80d4f49acf8d4f5a56a9ae, type: 3}
+  - obj: {fileID: 3737963518046997109, guid: 14ce45826be7c064a903687335db68e0, type: 3}
     min: 30
     max: 100
   - obj: {fileID: 3737963518046997109, guid: 2c62ad95e5f9f6e468a6b466e6498d09, type: 3}
     min: 0
+    max: 100
+  - obj: {fileID: 3737963518046997109, guid: 2c62ad95e5f9f6e468a6b466e6498d09, type: 3}
+    min: 50
+    max: 100
+  - obj: {fileID: 3737963518046997109, guid: 6035c1fe761034746b4275e7a719e69b, type: 3}
+    min: 50
     max: 100
   - obj: {fileID: 3737963518046997109, guid: 398c350ff4241fc4bbdacd9df4a18ebe, type: 3}
-    min: 40
+    min: 50
     max: 100
-  - obj: {fileID: 3737963518046997109, guid: 2c62ad95e5f9f6e468a6b466e6498d09, type: 3}
-    min: 70
+  - obj: {fileID: 3737963518046997109, guid: 398c350ff4241fc4bbdacd9df4a18ebe, type: 3}
+    min: 0
     max: 100
   - obj: {fileID: 3737963518046997109, guid: 8a643ccd64cf87e47be3e81fec8502d6, type: 3}
     min: 0
     max: 100
-  - obj: {fileID: 3737963518046997109, guid: 6035c1fe761034746b4275e7a719e69b, type: 3}
-    min: 40
+  - obj: {fileID: 3737963518046997109, guid: 03868d559fa113542b6636132010f67e, type: 3}
+    min: 75
+    max: 100
+  - obj: {fileID: 3737963518046997109, guid: 8a643ccd64cf87e47be3e81fec8502d6, type: 3}
+    min: 0
     max: 100
   lowDrops: []
   ignoreLowDrops: 1
@@ -293,7 +299,7 @@ Transform:
   m_GameObject: {fileID: 8743748631407176874}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.375, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -342,9 +348,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: -7531011346372572665, guid: f5862d593ff983f4ebaef8b5ee765712, type: 3}
-  m_Color: {r: 0.5, g: 1, b: 0.7, a: 1}
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 5430707979677454033, guid: 5aee8b217e3489e43a481cf20de7e59e, type: 3}
+  m_Color: {r: 0, g: 1, b: 0.5, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.37, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.301, g: 1, b: 0.597, a: 1}
+  m_Color: {r: 0.2, g: 0.8, b: 0.4, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -176,10 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1389a0ad0a696e040ae7ec3e14913d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addHp: 0
+  addHp: 30
   addArmor: 0
   used: 0
-  uses: 8
+  uses: 4
   removes:
   - name: Bleeding
   - name: Hard-Bleed
@@ -187,7 +187,11 @@ MonoBehaviour:
   applies: []
   mainApplies:
   - name: Regeneration
-    frames: 200
+    frames: 60
+  - name: Bandaged
+    frames: 30
+  - name: Poison Immunity
+    frames: 30
   changes: []
   sideChanges: []
 --- !u!114 &-6741357910760574484
@@ -203,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toss: 1
-  tossPower: 30
-  angularToss: 50
+  tossPower: 50
+  angularToss: 200
   appearDistance: 0.5
   initialRotation: 0

@@ -25,6 +25,10 @@ public class DummyEnemy : MonoBehaviour
     public float damageMulti;
     public int memoryTime;
 
+    public float limitSpeed;
+    public float jumpPower;
+    public float dropStacks = 1;
+
     public bool ignoreProps;
     public bool friendlyFire;
     public bool prop = false;

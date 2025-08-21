@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.909, b: 0, a: 1}
+  m_Color: {r: 0.7, g: 0.4, b: 0.2, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -179,14 +179,14 @@ MonoBehaviour:
   addHp: 0
   addArmor: 0
   used: 0
-  uses: 3
+  uses: 1
   removes:
   - name: Slowed
   - name: Crippled
   applies: []
   mainApplies:
   - name: Hasty
-    frames: 45
+    frames: 80
   changes: []
   sideChanges: []
 --- !u!114 &-2253032632793111732
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toss: 1
-  tossPower: 40
-  angularToss: 70
+  tossPower: 50
+  angularToss: 200
   appearDistance: 0.5
   initialRotation: 0

@@ -45,9 +45,14 @@ public class EnemyController : MonoBehaviour
             if ( val != null )
             {
                 rb.AddForceX( val.Value.x * controls.speed, ForceMode2D.Force );
+                rb.linearVelocityX = Mathf.Clamp( rb.linearVelocityX, -controls.limitSpeed, controls.limitSpeed );
                 if (legit)
                 {
                     memory = controls.memoryTime;
+                }
+                if (enemy.transform.position.y > transform.position.y + 2)
+                {
+                    rb.AddForceY( controls.jumpPower, ForceMode2D.Impulse );
                 }
             }
             else
@@ -89,18 +94,21 @@ public class EnemyController : MonoBehaviour
     {
         if ( controls.Dead( ) )
         {
-            float slot = UnityEngine.Random.Range(0f, 100f);
-            List<DummyEnemy.DropItem> selected = enemy.GetComponent<PlayerMain>().hp < 50 && !controls.ignoreLowDrops ? controls.lowDrops : controls.drops;
-            foreach ( var item in selected )
-            {
-                if ( item.min <= slot && item.max >= slot )
+            for (int x = 0; x < controls.dropStacks; x++)
+            { 
+                float slot = UnityEngine.Random.Range(0f, 100f);
+                List<DummyEnemy.DropItem> selected = enemy.GetComponent<PlayerMain>().hp < 50 && !controls.ignoreLowDrops ? controls.lowDrops : controls.drops;
+                foreach ( var item in selected )
                 {
-                    GameObject i = Instantiate(item.obj, transform.parent.parent, true);
-                    i.transform.position = transform.position;
-                    i.name = i.name.Replace( "(Clone)", "" );
+                    if ( item.min <= slot && item.max >= slot )
+                    {
+                        GameObject i = Instantiate(item.obj, transform.parent.parent, true);
+                        i.transform.position = transform.position;
+                        i.name = i.name.Replace( "(Clone)", "" );
+                    }
                 }
+                Destroy( gameObject );
             }
-            Destroy( gameObject );
         }
     }
 

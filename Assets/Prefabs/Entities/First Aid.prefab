@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4277776672650907467}
   - component: {fileID: -2253032632793111732}
   m_Layer: 7
-  m_Name: Crude M-Pack
+  m_Name: First Aid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.15, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.216, g: 0.63, b: 0.318, a: 1}
+  m_Color: {r: 0.3, g: 0.5, b: 0.3, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -176,21 +176,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1389a0ad0a696e040ae7ec3e14913d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addHp: 5
+  addHp: 25
   addArmor: 0
   used: 0
-  uses: 2
-  removes: []
+  uses: 1
+  removes:
+  - name: Bleeding
   applies: []
   mainApplies: []
   changes:
-  - from: Bleeding
-    to: Bleeding
-    efficency: 0.6
-    keep: 0
   - from: Hard-Bleed
-    to: Hard-Bleed
-    efficency: 0.8
+    to: Bleeding
+    efficency: 0.2
+    keep: 0
+  - from: Poisoned
+    to: Poisoned
+    efficency: 0.75
+    keep: 0
+  - from: Slowed
+    to: Slowed
+    efficency: 0.25
     keep: 0
   sideChanges: []
 --- !u!114 &-2253032632793111732
@@ -206,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toss: 1
-  tossPower: 20
-  angularToss: 250
+  tossPower: 50
+  angularToss: 200
   appearDistance: 0.5
   initialRotation: 0

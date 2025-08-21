@@ -187,12 +187,15 @@ MonoBehaviour:
   durability: 4
   maxImpactSpeed: 20
   impactDamageModifier: 0.8
-  bounce: 120
+  bounce: 70
   bounceCoff: 450
   tossUp: 150
   stunMulti: 17
   damageMulti: 2
   memoryTime: 120
+  limitSpeed: 200
+  jumpPower: 0.2
+  dropStacks: 1
   ignoreProps: 1
   friendlyFire: 0
   prop: 0
@@ -209,20 +212,11 @@ MonoBehaviour:
   - obj: {fileID: 3737963518046997109, guid: 1f2156adc4634b640a3c34ded7990ef4, type: 3}
     min: 50
     max: 70
-  - obj: {fileID: 3737963518046997109, guid: 14ce45826be7c064a903687335db68e0, type: 3}
+  - obj: {fileID: 3737963518046997109, guid: 4fb9620a5e0876b4c93ec0fc0097e6a2, type: 3}
+    min: 0
+    max: 70
+  - obj: {fileID: 3737963518046997109, guid: 4246a43f9014862488e0b3152d91a079, type: 3}
     min: 70
-    max: 90
-  - obj: {fileID: 3737963518046997109, guid: 6035c1fe761034746b4275e7a719e69b, type: 3}
-    min: 90
-    max: 100
-  - obj: {fileID: 3737963518046997109, guid: 6035c1fe761034746b4275e7a719e69b, type: 3}
-    min: 90
-    max: 100
-  - obj: {fileID: 3737963518046997109, guid: 6035c1fe761034746b4275e7a719e69b, type: 3}
-    min: 90
-    max: 100
-  - obj: {fileID: 3737963518046997109, guid: 6035c1fe761034746b4275e7a719e69b, type: 3}
-    min: 90
     max: 100
   lowDrops: []
   ignoreLowDrops: 1

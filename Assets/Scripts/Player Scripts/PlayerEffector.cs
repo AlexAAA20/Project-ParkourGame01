@@ -127,12 +127,10 @@ public class Effect
     });
     public static Effect regeneration = new Effect("Regeneration", (x, y) =>
     {
-        x.intFlag++;
-        if ( x.intFlag >= 60 )
+        if ( y.hp < 100 )
         {
-            y.Heal(1, true);
+            y.Heal(0.2f, true);
             x.framesLeft--;
-            x.intFlag = 0;
         }
     }, true);
     public static Effect ramboMode = new Effect("Rambo Mode", (x, y) =>

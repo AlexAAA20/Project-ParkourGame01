@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5, g: 0.8, b: 0.75, a: 1}
+  m_Color: {r: 0.75, g: 0.8, b: 0.75, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -185,9 +185,7 @@ MonoBehaviour:
   applies: []
   mainApplies:
   - name: Cast Immunity
-    frames: 60
-  - name: Nanobots
-    frames: 5
+    frames: 250
   changes: []
   sideChanges: []
 --- !u!114 &-2253032632793111732
@@ -203,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toss: 1
-  tossPower: 20
-  angularToss: 250
+  tossPower: 50
+  angularToss: 200
   appearDistance: 0.5
   initialRotation: 0

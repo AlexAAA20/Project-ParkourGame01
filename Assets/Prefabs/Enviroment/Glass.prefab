@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2560063103988065894}
   - component: {fileID: 1770700871993204912}
   m_Layer: 0
-  m_Name: Background Wall
+  m_Name: Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5647059, g: 0.5647059, b: 0.5647059, a: 1}
+  m_Color: {r: 0, g: 0.5, b: 0.795, a: 0.2}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

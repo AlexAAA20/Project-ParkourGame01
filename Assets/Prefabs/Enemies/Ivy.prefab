@@ -193,6 +193,9 @@ MonoBehaviour:
   stunMulti: 2
   damageMulti: 1
   memoryTime: 60
+  limitSpeed: 200
+  jumpPower: 0.2
+  dropStacks: 1
   ignoreProps: 0
   friendlyFire: 0
   prop: 0
