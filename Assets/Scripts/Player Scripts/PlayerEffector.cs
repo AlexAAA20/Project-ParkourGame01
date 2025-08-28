@@ -239,9 +239,9 @@ public class Effect
     public static Effect bloodhurl = new Effect("Bloodhurl", (x, y) =>
     {
         x.intFlag++;
-        if ( x.intFlag >= 60 )
+        if ( x.intFlag >= 120 )
         {
-            y.Damage(x.framesLeft, true);
+            y.Damage(x.framesLeft / 2, true);
             x.framesLeft = x.framesLeft + 1;
             x.intFlag = 0;
         }

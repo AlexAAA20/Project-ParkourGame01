@@ -38,9 +38,12 @@ public class ProgressMaster : MonoBehaviour
             PopupSystem.CastPopupOutside( PopupController.Colors.Pink, $"The world cracks as well as your sanity.", "" );
             PopupSystem.CastPopupOutside( PopupController.Colors.Pink, $"Find the exit and jump into the gap.", "" );
             portal.canBeCapped = true;
-            foreach (var item in toTrigger)
+            if ( toTrigger.Count > 0 )
             {
-                item.spawning = true;
+                foreach ( var item in toTrigger )
+                {
+                    item.spawning = true;
+                }
             }
             Medpack.TryGetEffect( "Bloodhurl", out Effect eff );
             GameObject.FindGameObjectWithTag( "Player" ).GetComponent<PlayerMain>( ).drseuss.Apply( eff, 1 );

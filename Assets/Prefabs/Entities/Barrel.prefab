@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toss: 1
-  tossPower: 120
+  tossPower: 240
   angularToss: 400
   appearDistance: 0.8
   initialRotation: 0
