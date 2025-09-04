@@ -163,7 +163,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2769879831648209073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +206,8 @@ MonoBehaviour:
   seen:
     sprite: {fileID: 1452342696, guid: 5fc21e8ba7d3f884ea001d0aa87f3959, type: 3}
     color: {r: 1, g: 0, b: 0, a: 1}
+  alsoStatsLol: {fileID: 0}
+  emulator: {fileID: 0}
 --- !u!1 &5560704181192344427
 GameObject:
   m_ObjectHideFlags: 0

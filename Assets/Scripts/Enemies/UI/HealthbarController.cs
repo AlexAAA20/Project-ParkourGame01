@@ -20,20 +20,17 @@ public class HealthbarController : MonoBehaviour
     public ComplexSprite unseen;
     public ComplexSprite nearing;
     public ComplexSprite seen;
-    DummyEnemy alsoStatsLol;
-    EnemyController emulator;
+    public DummyEnemy alsoStatsLol;
+    public EnemyController emulator;
     public void Start ()
     {
-        alsoStatsLol = transform.parent.GetComponent<DummyEnemy>( );
-        emulator = transform.parent.GetComponent<EnemyController>( );
         Debug.Log( $"<color=green>yay you got it!" );
-        stats.text = $"<color=#FFAA>{Mathf.Round( alsoStatsLol.speed / 20f )}x SPD " +
-            $"<color=red>{Mathf.Round( alsoStatsLol.damageMulti * 1000 ) / 10}% DMG " +
-            $"<color=green>{alsoStatsLol.maxHealth} HP";
+        stats.text = $"<color=#FFAA>{Mathf.Round( alsoStatsLol.speed / 20f )}u " +
+            $"<color=red>{Mathf.Round( alsoStatsLol.damageMulti * 1000 ) / 10}% " +
+            $"<color=green>{alsoStatsLol.maxHealth}HP";
         if ( alsoStatsLol.prop ) stealth.gameObject.SetActive( false );
     }
 
-    // Update is called once per frame
     public void Update()
     {
         healthbar.fillAmount = alsoStatsLol.percent;
@@ -44,20 +41,20 @@ public class HealthbarController : MonoBehaviour
             bool near = emulator.EmulateDetectEnemy( alsoStatsLol.crouchedSight );
             bool Rseen = emulator.inSight;
 
-            if ( !Rseen )
-            {
-                stealth.sprite = unseen.sprite;
-                stealth.color = unseen.color;
-            }
-            else
+            if ( Rseen )
             {
                 stealth.sprite = seen.sprite;
                 stealth.color = seen.color;
             }
-            if ( far && !near )
+            else if ( far && !near )
             {
                 stealth.sprite = nearing.sprite;
                 stealth.color = nearing.color;
+            }
+            else
+            {
+                stealth.sprite = unseen.sprite;
+                stealth.color = unseen.color;
             }
         }
     }

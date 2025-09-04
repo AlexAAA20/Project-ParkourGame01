@@ -21,13 +21,20 @@ public class EnemyController : MonoBehaviour
 
     public void Start ( )
     {
+        controls = GetComponent<DummyEnemy>( );
+
         thingy = Instantiate(healthbar);
-        thingy.transform.SetParent( transform );
+        HealthbarController controller = thingy.GetComponent<HealthbarController>();
+        controller.alsoStatsLol = controls;
+        controller.emulator = this;
+        controller.Start( );
+        thingy.transform.SetParent( null );
         thingy.transform.position = transform.position + Vector3.up * offset;
         Attacher atch = thingy.AddComponent<Attacher>( );
         atch.attatchedTo = transform;
+        atch.rotation = Attacher.RotationSavingMethod.Zero;
+        atch.Start( );
 
-        controls = GetComponent<DummyEnemy>();
         rb = GetComponent<Rigidbody2D>();
         enemy = GameObject.FindWithTag( "Player" ).transform;
         pm = enemy.GetComponent<PlayerMovement>();
@@ -52,6 +59,7 @@ public class EnemyController : MonoBehaviour
         if ( pm.connected.pewpew.targetted == gameObject || act || EmulateDetectEnemy(20) )
         {
             thingy.SetActive( true );
+            thingy.GetComponent<Attacher>( ).Update( );
             thingy.GetComponent<HealthbarController>( ).Update( );
         }
         else
@@ -135,6 +143,7 @@ public class EnemyController : MonoBehaviour
     {
         if ( controls.Dead( ) )
         {
+            Destroy( thingy );
             for (int x = 0; x < controls.dropStacks; x++)
             { 
                 float slot = UnityEngine.Random.Range(0f, 100f);
