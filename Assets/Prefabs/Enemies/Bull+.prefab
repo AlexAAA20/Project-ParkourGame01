@@ -247,3 +247,5 @@ MonoBehaviour:
   propMask:
     serializedVersion: 2
     m_Bits: 128
+  healthbar: {fileID: 892420256671081354, guid: 70f4c442e7009d14c9a6f32033ce09ab, type: 3}
+  offset: 0.4

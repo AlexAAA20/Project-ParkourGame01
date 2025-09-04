@@ -17,10 +17,11 @@ public class GunScript : MonoBehaviour
     public int shootMouseButton = 0;
     public LayerMask ignore;
     public bool letFire;
+    public GameObject targetted;
 
     bool loading;
     Rigidbody2D rb;
-    Vector2 cursorPos;
+    public Vector2 cursorPos;
     Coroutine crt;
 
     public void Start ( )
@@ -39,6 +40,7 @@ public class GunScript : MonoBehaviour
     public void Update ( )
     {
         Aim( );
+        targetted = SampleCast( );
 
         Vector2 direction = cursorPos - (Vector2)arm.position;
         arm.localRotation = Quaternion.Euler( 0, 0, Mathf.Atan2( direction.y, direction.x ) * Mathf.Rad2Deg );
@@ -89,7 +91,14 @@ public class GunScript : MonoBehaviour
             ammoCounter.Restart( this );
         }
         loading = false;
-        StopCoroutine( crt );
+        try
+        {
+            StopCoroutine( crt );
+        }
+        catch ( System.Exception )
+        {
+            Debug.Log( $"<color=yellow>dont reload if ur full!!!" );
+        }
         crt = null;
     }
 
@@ -110,7 +119,19 @@ public class GunScript : MonoBehaviour
             hit.rigidbody.AddForce( dir.normalized * knockback );
         }
         rb.AddForce( dir.normalized * -recoil );
+    }
 
-
+    public GameObject SampleCast( )
+    {
+        Vector2 dir = cursorPos - (Vector2)arm.position;
+        RaycastHit2D hit = Physics2D.Raycast(arm.position, dir, range, ~ignore);
+        try
+        {
+            return hit.collider.gameObject;
+        }
+        catch ( System.Exception )
+        {
+            return null;
+        }
     }
 }

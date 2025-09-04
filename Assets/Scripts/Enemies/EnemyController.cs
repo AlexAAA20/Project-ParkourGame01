@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -9,14 +10,23 @@ public class EnemyController : MonoBehaviour
     PlayerMovement pm;
     public LayerMask enemyMask;
     public LayerMask propMask;
+    public GameObject healthbar;
+    public float offset = 0.4f;
     LayerMask filter;
     DummyEnemy controls;
     Rigidbody2D rb;
-    bool inSight = false;
+    GameObject thingy;
+    public bool inSight = false;
     int memory = 0;
 
     public void Start ( )
     {
+        thingy = Instantiate(healthbar);
+        thingy.transform.SetParent( transform );
+        thingy.transform.position = transform.position + Vector3.up * offset;
+        Attacher atch = thingy.AddComponent<Attacher>( );
+        atch.attatchedTo = transform;
+
         controls = GetComponent<DummyEnemy>();
         rb = GetComponent<Rigidbody2D>();
         enemy = GameObject.FindWithTag( "Player" ).transform;
@@ -32,6 +42,24 @@ public class EnemyController : MonoBehaviour
     }
     public void Update ( )
     {
+        bool act = false;
+
+        List<RaycastHit2D> hits = Physics2D.RaycastAll(pm.connected.pewpew.cursorPos, Vector3.forward).ToList();
+        foreach ( var item in hits )
+        {
+            if ( item.collider.gameObject == gameObject ) act = true;
+        }
+        if ( pm.connected.pewpew.targetted == gameObject || act || EmulateDetectEnemy(20) )
+        {
+            thingy.SetActive( true );
+            thingy.GetComponent<HealthbarController>( ).Update( );
+        }
+        else
+        {
+            thingy.SetActive( false );
+        }
+
+
         if ( !controls.prop )
         {
             Vector2? val = DetectEnemy( );
@@ -88,6 +116,19 @@ public class EnemyController : MonoBehaviour
             return ( enemy.position - transform.position ).normalized;
         }
         return null;
+    }
+    public bool EmulateDetectEnemy ( float distance )
+    {
+        RaycastHit2D hit = Physics2D.Raycast(
+            transform.position,
+            (enemy.position - transform.position).normalized,
+            distance,
+            ~filter);
+        if ( hit.transform == enemy )
+        {
+            return true;
+        }
+        return false;
     }
 
     public void DieOnDeath( )

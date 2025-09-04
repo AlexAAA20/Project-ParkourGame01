@@ -247,11 +247,13 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector]
     public bool isSprinting = false;
+    public PlayerMain connected;
 
     public void Start ( )
     {
         rb = GetComponent<Rigidbody2D>( );
         coll = GetComponent<BoxCollider2D>( );
+        connected = GetComponent<PlayerMain>( );
     }
 
     public void ReactImpact( int staggerFrames )
