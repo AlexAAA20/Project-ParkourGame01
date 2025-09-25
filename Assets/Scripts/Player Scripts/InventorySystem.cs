@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unity.Burst.Intrinsics;
 using Unity.Services.CloudSave.Models;
 using UnityEngine;
@@ -20,7 +21,9 @@ public class InventorySystem : MonoBehaviour
 
     int itemCount = 0;
 
-    public Action<bool> OnInventoryUpdate;
+    public Action<BackpackDisplayer.UpdateType> OnInventoryUpdate;
+    public float selectedShake = 0;
+    public float allShake = 0;
 
     public List<GameObject> owned;
     PlayerMain pm;
@@ -45,7 +48,7 @@ public class InventorySystem : MonoBehaviour
         if ( movement < 0 ) { selected--; changed = true; }
         if ( selected >= owned.Count ) { selected = 0; changed = true; }
         if ( selected < 0 ) { selected = owned.Count - 1; changed = true; }
-        if ( changed ) OnInventoryUpdate.Invoke( false );
+        if ( changed ) OnInventoryUpdate.Invoke( BackpackDisplayer.UpdateType.Light );
 
         Checkity( KeyCode.Alpha1, 1 );
         Checkity( KeyCode.Alpha2, 2 );
@@ -67,26 +70,43 @@ public class InventorySystem : MonoBehaviour
                     if ( owned[i] == null ) { owned[i] = fetched; break; }
                 }
                 itemCount++;
-                OnInventoryUpdate.Invoke( false );
+                OnInventoryUpdate.Invoke( BackpackDisplayer.UpdateType.Light );
             }
         }
         if ( Input.GetKeyDown( KeyCode.F ) && itemCount > 0 )
         {
+            selectedShake = 17;
             Put( );
         }
-        if ( Input.GetKeyDown( KeyCode.E ) && itemCount > 0 )
+        bool happy = false;
+        IUsable component = null;
+        try
         {
-            IUsable component = owned[selected].GetComponent<IUsable>( );
-            component.Use( pm );
-            OnInventoryUpdate.Invoke( false );
+            component = owned[selected].GetComponent<IUsable>( );
+            happy = true;
         }
+        catch (Exception)
+        {
+
+        }
+        if ( happy )
+        {
+            component.WhenHeldAction( pm );
+            if ( Input.GetKeyDown( KeyCode.E ) && itemCount > 0 )
+            {
+                component.Use( pm );
+                selectedShake = 17;
+                OnInventoryUpdate.Invoke( BackpackDisplayer.UpdateType.Light );
+            }
+        }
+        OnInventoryUpdate.Invoke( BackpackDisplayer.UpdateType.Update );
     }
     public void Checkity( KeyCode k, int slot )
     {
         if ( Input.GetKeyDown(k) )
         {
             selected = slot - 1;
-            OnInventoryUpdate.Invoke( false );
+            OnInventoryUpdate?.Invoke( BackpackDisplayer.UpdateType.Light );
         }
     }
 
@@ -102,7 +122,7 @@ public class InventorySystem : MonoBehaviour
         {
             selected--;
         }
-        OnInventoryUpdate.Invoke( false );
+        OnInventoryUpdate.Invoke( BackpackDisplayer.UpdateType.Light );
     }
 
     public void Aim ( )
@@ -128,6 +148,7 @@ public class InventorySystem : MonoBehaviour
             if ( picking != null ) 
             {
                 GameObject saving = hit.transform.gameObject;
+                saving.transform.SetParent( null );
                 saving.SetActive( false );
                 return saving;
             }

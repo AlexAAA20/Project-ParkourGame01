@@ -39,11 +39,11 @@ public class GunScript : MonoBehaviour
 
     public void Update ( )
     {
-        Aim( );
-        targetted = SampleCast( );
-
         Vector2 direction = cursorPos - (Vector2)arm.position;
         arm.localRotation = Quaternion.Euler( 0, 0, Mathf.Atan2( direction.y, direction.x ) * Mathf.Rad2Deg );
+
+        Aim( );
+        targetted = SampleCast( );
 
         if ( Input.GetKeyDown( reload ) && !loading )
         {
@@ -104,9 +104,9 @@ public class GunScript : MonoBehaviour
 
     public void Aim ( )
     {
-        Vector2 pixels = Input.mousePosition;
-        Ray ray = Camera.main.ScreenPointToRay( pixels );
-        cursorPos = ray.origin;
+        Vector3 mouseScreen = Input.mousePosition;
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(mouseScreen);
+        cursorPos = mouseWorld;
     }
 
     public void Shoot( )

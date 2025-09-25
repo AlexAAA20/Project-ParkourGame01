@@ -50,4 +50,5 @@ public class PickUpAble : MonoBehaviour, IUsable
 public interface IUsable
 {
     public void Use ( PlayerMain player );
+    public virtual void WhenHeldAction ( PlayerMain player ) { }
 }

@@ -2321,9 +2321,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popup: {fileID: 8562310486601530181, guid: d66eda8573204754e8fea273503c0478, type: 3}
-  spacing: {x: 0, y: -55}
-  startOffset: {x: 0, y: 225}
-  destroyAfter: 8
+  spacing: {x: 2, y: -50}
+  startOffset: {x: -50, y: 225}
+  destroyAfter: 10
 --- !u!1 &4163159965549805104
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,6 +3158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attatchedTo: {fileID: 971156601649066157}
   on: 1
+  rotation: 0
 --- !u!1 &6221947870392855230
 GameObject:
   m_ObjectHideFlags: 0
@@ -3946,7 +3947,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 75}
-  m_SizeDelta: {x: 800, y: 150}
+  m_SizeDelta: {x: 850, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2160357397847870657
 CanvasRenderer:
@@ -3998,7 +3999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebecbc5ae9e9d0b45ab52dea4d2abdd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3062560174006291111, guid: bf5f86a93f1cb9b488d5a1ae6d9f7e4d, type: 3}
+  prefab: {fileID: 3062560174006291111, guid: cee39f43499fef447baea5b05a609be1, type: 3}
   start: {x: -355, y: 0}
   offset: {x: 90, y: 0}
   inventory: {fileID: 7142594185013131708}
@@ -4399,6 +4400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attatchedTo: {fileID: 971156601649066157}
   on: 1
+  rotation: 0
 --- !u!1 &8252031989796847399
 GameObject:
   m_ObjectHideFlags: 0
@@ -4674,6 +4676,7 @@ MonoBehaviour:
   texture: {fileID: 6828386846017550421}
   stunner: {fileID: 7037359393142464302}
   isSprinting: 0
+  connected: {fileID: 0}
 --- !u!114 &8384302821577353652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4739,6 +4742,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   letFire: 0
+  targetted: {fileID: 0}
+  cursorPos: {x: 0, y: 0}
 --- !u!114 &7142594185013131708
 MonoBehaviour:
   m_ObjectHideFlags: 0

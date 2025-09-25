@@ -227,21 +227,24 @@ MonoBehaviour:
   - obj: {fileID: 3737963518046997109, guid: 7c191ffe18e04e244b1971df1373ea9b, type: 3}
     min: 0
     max: 100
-  - obj: {fileID: 3737963518046997109, guid: 991d75303e80d4f49acf8d4f5a56a9ae, type: 3}
+  - obj: {fileID: 3737963518046997109, guid: 398c350ff4241fc4bbdacd9df4a18ebe, type: 3}
+    min: 0
+    max: 100
+  - obj: {fileID: 3737963518046997109, guid: 8a643ccd64cf87e47be3e81fec8502d6, type: 3}
+    min: 0
+    max: 100
+  - obj: {fileID: 3737963518046997109, guid: 398c350ff4241fc4bbdacd9df4a18ebe, type: 3}
+    min: 70
+    max: 100
+  - obj: {fileID: 3737963518046997109, guid: 8a643ccd64cf87e47be3e81fec8502d6, type: 3}
+    min: 70
+    max: 100
+  - obj: {fileID: 3737963518046997109, guid: c66158a4e578caf4d9cd2c0996ce0562, type: 3}
     min: 30
-    max: 100
-  - obj: {fileID: 3737963518046997109, guid: 398c350ff4241fc4bbdacd9df4a18ebe, type: 3}
-    min: 0
-    max: 100
-  - obj: {fileID: 3737963518046997109, guid: 8a643ccd64cf87e47be3e81fec8502d6, type: 3}
-    min: 0
-    max: 100
-  - obj: {fileID: 3737963518046997109, guid: 8a643ccd64cf87e47be3e81fec8502d6, type: 3}
-    min: 70
-    max: 100
-  - obj: {fileID: 3737963518046997109, guid: 398c350ff4241fc4bbdacd9df4a18ebe, type: 3}
-    min: 70
-    max: 100
+    max: 70
+  - obj: {fileID: 3737963518046997109, guid: 2c62ad95e5f9f6e468a6b466e6498d09, type: 3}
+    min: 30
+    max: 70
   lowDrops: []
   ignoreLowDrops: 1
   applies: []

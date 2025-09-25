@@ -67,6 +67,13 @@ public class PlayerMain : MonoBehaviour
                 PopupSystem.CastPopupOutside( PopupController.Colors.Red, "You respawned.", $"{deaths}#" );
             }
         }
+        else
+        {
+            if ( Vector3.Distance(transform.position, start) > 500 )
+            {
+                respawning = true;
+            }
+        }
     }
     public void CheckArmor( ) => armorBar.gameObject.SetActive( armor > 0 );
     public void Respawn ( )

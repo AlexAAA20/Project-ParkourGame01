@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     public LayerMask propMask;
     public GameObject healthbar;
     public float offset = 0.4f;
+    public Action OnDeathEvent;
     LayerMask filter;
     DummyEnemy controls;
     Rigidbody2D rb;
@@ -143,6 +144,7 @@ public class EnemyController : MonoBehaviour
     {
         if ( controls.Dead( ) )
         {
+            OnDeathEvent?.Invoke( );
             Destroy( thingy );
             for (int x = 0; x < controls.dropStacks; x++)
             { 
@@ -152,13 +154,13 @@ public class EnemyController : MonoBehaviour
                 {
                     if ( item.min <= slot && item.max >= slot )
                     {
-                        GameObject i = Instantiate(item.obj, transform.parent.parent, true);
+                        GameObject i = Instantiate(item.obj, null, true);
                         i.transform.position = transform.position;
                         i.name = i.name.Replace( "(Clone)", "" );
                     }
                 }
-                Destroy( gameObject );
             }
+            Destroy( gameObject );
         }
     }
 

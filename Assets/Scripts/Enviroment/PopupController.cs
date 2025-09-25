@@ -31,30 +31,30 @@ public class PopupController : MonoBehaviour
         switch ( col )
         {
             case Colors.Basic:
-                sr.color = new Color( 0, 0, 0, 0.4f );
+                sr.color = new Color( 0, 0, 0, 0.8f );
                 break;
 
             case Colors.Red:
-                sr.color = new Color( 1, 0, 0, 0.4f );
+                sr.color = new Color( 1f, 0.4f, 0.4f, 0.8f );
                 break;
 
             case Colors.Green:
-                sr.color = new Color( 0, 1, 0, 0.4f );
+                sr.color = new Color( 0.4f, 1, 0.4f, 0.8f );
                 break;
 
             case Colors.Orange:
-                sr.color = new Color( 1, 0.6f, 0, 0.4f );
+                sr.color = new Color( 1, 0.6f, 0.3f, 0.8f );
                 break;
 
             case Colors.Meh:
-                sr.color = new Color( 1, 0.8f, 0, 0.4f );
+                sr.color = new Color( 0.8f, 0.8f, 0, 0.8f );
                 break;
 
             case Colors.Alright:
-                sr.color = new Color( 0.8f, 1, 0, 0.4f );
+                sr.color = new Color( 0.6f, 1, 0.4f, 0.8f );
                 break;
             case Colors.Pink:
-                sr.color = new Color( 1f, 0, 0.6f, 0.4f );
+                sr.color = new Color( 1f, 0.4f, 0.6f, 0.8f );
                 break;
         }
     }

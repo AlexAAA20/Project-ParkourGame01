@@ -178,22 +178,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 60
   maxHealth: 60
-  sight: 6
+  sight: 8
   crouchedSight: 0
-  speed: 70
+  speed: 50
   stoppingForce: 0
-  minImpactSpeed: 11
-  minPlayerImpactSpeed: 4
-  durability: 4
-  maxImpactSpeed: 20
+  minImpactSpeed: 8
+  minPlayerImpactSpeed: 6
+  durability: 6
+  maxImpactSpeed: 40
   impactDamageModifier: 0.8
-  bounce: 70
-  bounceCoff: 450
+  bounce: 50
+  bounceCoff: 70
   tossUp: 150
-  stunMulti: 17
+  stunMulti: 7
   damageMulti: 2
-  memoryTime: 120
-  limitSpeed: 200
+  memoryTime: 50
+  limitSpeed: 120
   jumpPower: 0.2
   dropStacks: 1
   ignoreProps: 1
@@ -249,3 +249,4 @@ MonoBehaviour:
     m_Bits: 128
   healthbar: {fileID: 892420256671081354, guid: 70f4c442e7009d14c9a6f32033ce09ab, type: 3}
   offset: 0.4
+  inSight: 0
