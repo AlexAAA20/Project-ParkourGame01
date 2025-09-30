@@ -4762,6 +4762,8 @@ MonoBehaviour:
     m_Bits: 8
   limit: 9
   selected: 0
+  selectedShake: 0
+  allShake: 0
   owned: []
 --- !u!114 &7160709903333765150
 MonoBehaviour:
